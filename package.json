@@ -1,0 +1,17 @@
+{
+  "name": "skripsi",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"pnpm -C frontend dev\" \"pnpm -C backend start:dev\"",
+    "dev:web": "pnpm -C frontend dev",
+    "dev:api": "pnpm -C backend start:dev",
+    "build": "pnpm -C frontend build && pnpm -C backend build",
+    "build:web": "pnpm -C frontend build",
+    "build:api": "pnpm -C backend build",
+    "start:web": "pnpm -C frontend start -- -p 3000",
+    "start:api": "pnpm -C backend start:prod"
+  },
+  "devDependencies": {
+    "concurrently": "latest"
+  }
+}

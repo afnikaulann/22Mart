@@ -1,0 +1,17 @@
+{
+  "name": "skripsi",
+  "apps": {
+    "web": {
+      "path": "frontend",
+      "port": 3000,
+      "health": "/"
+    },
+    "api": {
+      "path": "backend",
+      "port": 4000,
+      "health": "/health"
+    }
+  },
+  "packageManager": "pnpm",
+  "node": "20"
+}

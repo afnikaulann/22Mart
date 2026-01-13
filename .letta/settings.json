@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm add:*)",
+      "Bash(npm install:*)",
+      "Edit(backend/**)",
+      "Edit(backend\\prisma/**)",
+      "Bash(where node)",
+      "Bash(cmd /c \"where node\")",
+      "Bash(powershell -Command \"Get-Command node -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source\")",
+      "Bash(\"C:\\Program Files\\nodejs\\npm.cmd\" --version)",
+      "Bash(cd \"C:\\Users\\ACER\\skripsi\\backend\" && \"C:\\Program Files\\nodejs\\npm.cmd\" install)",
+      "Bash(cd \"C:\\Users\\ACER\\skripsi\\backend\" && del pnpm-lock.yaml 2>nul & \"C:\\Program Files\\nodejs\\npm.cmd\" install)"
+    ]
+  }
+}
