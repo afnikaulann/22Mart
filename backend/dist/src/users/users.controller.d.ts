@@ -1,6 +1,6 @@
 import { UsersService } from './users.service';
 import { ChangePasswordDto, UpdateProfileDto } from './dto';
-import { Role } from '../common/decorators';
+import type { Role } from '../common/decorators';
 export declare class UsersController {
     private usersService;
     constructor(usersService: UsersService);
