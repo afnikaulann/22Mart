@@ -5,37 +5,194 @@ export declare class OrdersController {
     constructor(ordersService: OrdersService);
     create(userId: string, dto: CreateOrderDto): Promise<{
         message: string;
-        order: any;
+        order: {
+            items: ({
+                product: {
+                    name: string;
+                    id: string;
+                    images: string[];
+                };
+            } & {
+                id: string;
+                createdAt: Date;
+                price: number;
+                productId: string;
+                quantity: number;
+                orderId: string;
+            })[];
+        } & {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            userId: string;
+            orderNumber: string;
+            status: import("@prisma/client").$Enums.OrderStatus;
+            totalAmount: number;
+            shippingAddress: string;
+            shippingCost: number;
+            paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
+            notes: string | null;
+        };
     }>;
     findAllByUser(userId: string, page?: string, limit?: string): Promise<{
-        orders: any;
+        orders: ({
+            items: ({
+                product: {
+                    name: string;
+                    id: string;
+                    slug: string;
+                    images: string[];
+                };
+            } & {
+                id: string;
+                createdAt: Date;
+                price: number;
+                productId: string;
+                quantity: number;
+                orderId: string;
+            })[];
+        } & {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            userId: string;
+            orderNumber: string;
+            status: import("@prisma/client").$Enums.OrderStatus;
+            totalAmount: number;
+            shippingAddress: string;
+            shippingCost: number;
+            paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
+            notes: string | null;
+        })[];
         pagination: {
             page: number;
             limit: number;
-            total: any;
+            total: number;
             totalPages: number;
         };
     }>;
     findAllAdmin(page?: string, limit?: string, status?: OrderStatus, search?: string): Promise<{
-        orders: any;
+        orders: ({
+            user: {
+                email: string;
+                name: string;
+                phone: string | null;
+                id: string;
+            };
+            items: ({
+                product: {
+                    name: string;
+                    id: string;
+                    images: string[];
+                };
+            } & {
+                id: string;
+                createdAt: Date;
+                price: number;
+                productId: string;
+                quantity: number;
+                orderId: string;
+            })[];
+        } & {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            userId: string;
+            orderNumber: string;
+            status: import("@prisma/client").$Enums.OrderStatus;
+            totalAmount: number;
+            shippingAddress: string;
+            shippingCost: number;
+            paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
+            notes: string | null;
+        })[];
         pagination: {
             page: number;
             limit: number;
-            total: any;
+            total: number;
             totalPages: number;
         };
     }>;
     getStats(): Promise<{
-        totalOrders: any;
-        pendingOrders: any;
-        processingOrders: any;
-        completedOrders: any;
-        cancelledOrders: any;
-        totalRevenue: any;
+        totalOrders: number;
+        pendingOrders: number;
+        processingOrders: number;
+        completedOrders: number;
+        cancelledOrders: number;
+        totalRevenue: number;
     }>;
-    findOneAdmin(id: string): Promise<any>;
+    findOneAdmin(id: string): Promise<{
+        user: {
+            email: string;
+            name: string;
+            phone: string | null;
+            id: string;
+            address: string | null;
+        };
+        items: ({
+            product: {
+                name: string;
+                id: string;
+                slug: string;
+                images: string[];
+            };
+        } & {
+            id: string;
+            createdAt: Date;
+            price: number;
+            productId: string;
+            quantity: number;
+            orderId: string;
+        })[];
+    } & {
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        orderNumber: string;
+        status: import("@prisma/client").$Enums.OrderStatus;
+        totalAmount: number;
+        shippingAddress: string;
+        shippingCost: number;
+        paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
+        notes: string | null;
+    }>;
     updateStatus(id: string, dto: UpdateOrderStatusDto): Promise<{
         message: string;
     }>;
-    findOne(userId: string, id: string): Promise<any>;
+    findOne(userId: string, id: string): Promise<{
+        user: {
+            email: string;
+            name: string;
+            phone: string | null;
+            id: string;
+        };
+        items: ({
+            product: {
+                name: string;
+                id: string;
+                slug: string;
+                images: string[];
+            };
+        } & {
+            id: string;
+            createdAt: Date;
+            price: number;
+            productId: string;
+            quantity: number;
+            orderId: string;
+        })[];
+    } & {
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        orderNumber: string;
+        status: import("@prisma/client").$Enums.OrderStatus;
+        totalAmount: number;
+        shippingAddress: string;
+        shippingCost: number;
+        paymentMethod: import("@prisma/client").$Enums.PaymentMethod;
+        notes: string | null;
+    }>;
 }

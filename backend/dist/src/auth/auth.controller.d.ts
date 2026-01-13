@@ -6,19 +6,34 @@ export declare class AuthController {
     register(dto: RegisterDto): Promise<{
         accessToken: string;
         message: string;
-        user: any;
+        user: {
+            email: string;
+            name: string;
+            phone: string | null;
+            id: string;
+            role: import("@prisma/client").$Enums.Role;
+        };
     }>;
     login(dto: LoginDto): Promise<{
         accessToken: string;
         message: string;
         user: {
-            id: any;
-            email: any;
-            name: any;
-            phone: any;
-            role: any;
-            avatar: any;
+            id: string;
+            email: string;
+            name: string;
+            phone: string | null;
+            role: import("@prisma/client").$Enums.Role;
+            avatar: string | null;
         };
     }>;
-    getProfile(userId: string): Promise<any>;
+    getProfile(userId: string): Promise<{
+        email: string;
+        name: string;
+        phone: string | null;
+        id: string;
+        address: string | null;
+        avatar: string | null;
+        role: import("@prisma/client").$Enums.Role;
+        createdAt: Date;
+    }>;
 }

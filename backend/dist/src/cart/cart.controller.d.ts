@@ -3,9 +3,44 @@ import { AddToCartDto, UpdateCartItemDto } from './dto';
 export declare class CartController {
     private cartService;
     constructor(cartService: CartService);
-    getCart(userId: string): Promise<any>;
+    getCart(userId: string): Promise<{
+        totalItems: number;
+        totalAmount: number;
+        items?: ({
+            product: {
+                category: {
+                    name: string;
+                    id: string;
+                    slug: string;
+                };
+            } & {
+                name: string;
+                id: string;
+                createdAt: Date;
+                updatedAt: Date;
+                description: string | null;
+                isActive: boolean;
+                slug: string;
+                categoryId: string;
+                price: number;
+                stock: number;
+                images: string[];
+            };
+        } & {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            productId: string;
+            quantity: number;
+            cartId: string;
+        })[] | undefined;
+        id?: string | undefined;
+        createdAt?: Date | undefined;
+        updatedAt?: Date | undefined;
+        userId?: string | undefined;
+    }>;
     getCartItemCount(userId: string): Promise<{
-        count: any;
+        count: number;
     }>;
     addToCart(userId: string, dto: AddToCartDto): Promise<{
         message: string;

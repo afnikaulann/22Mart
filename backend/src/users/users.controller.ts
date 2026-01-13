@@ -9,7 +9,8 @@ import {
 import { UsersService } from './users.service';
 import { ChangePasswordDto, UpdateProfileDto } from './dto';
 import { CurrentUser } from '../common/decorators/current-user.decorator';
-import { Roles, Role } from '../common/decorators';
+import { Roles } from '../common/decorators';
+import type { Role } from '../common/decorators';
 
 @Controller('users')
 export class UsersController {
