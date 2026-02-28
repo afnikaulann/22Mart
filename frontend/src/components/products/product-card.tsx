@@ -25,9 +25,13 @@ export function ProductCard({ product }: ProductCardProps) {
     }
   };
 
+  // Simulate a discount for UI purposes (10-30% off, deterministically based on ID length/chars so it doesn't jump)
+  const discountPercent = (product.id.charCodeAt(0) % 3) * 10 + 10; // 10%, 20%, or 30%
+  const originalPrice = product.price * (1 + discountPercent / 100);
+
   return (
     <Link href={`/products/${product.slug}`}>
-      <div className="group relative overflow-hidden rounded-xl border bg-card transition-all hover:shadow-lg">
+      <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border bg-white transition-all hover:border-primary hover:shadow-md">
         {/* Image */}
         <div className="relative aspect-square overflow-hidden bg-muted">
           <Image
@@ -35,57 +39,57 @@ export function ProductCard({ product }: ProductCardProps) {
             alt={product.name}
             fill
             className="object-cover transition-transform group-hover:scale-105"
-            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
           />
-          {isOutOfStock && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black/60">
-              <span className="rounded-full bg-white px-3 py-1 text-sm font-medium text-destructive">
-                Stok Habis
-              </span>
+          {/* Discount Badge */}
+          {!isOutOfStock && (
+            <div className="absolute left-0 top-0 rounded-br-lg bg-red-600 px-2 py-1 text-[10px] font-bold text-white shadow-sm">
+              Diskon {discountPercent}%
             </div>
           )}
-          {product.stock > 0 && product.stock <= 5 && (
-            <div className="absolute left-2 top-2">
-              <span className="rounded-full bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground">
-                Sisa {product.stock}
+          {isOutOfStock && (
+            <div className="absolute inset-0 flex items-center justify-center bg-white/70 backdrop-blur-[1px]">
+              <span className="rounded-md bg-destructive/90 px-3 py-1 text-xs font-semibold text-white shadow-sm">
+                Stok Habis
               </span>
             </div>
           )}
         </div>
 
-        {/* Content */}
-        <div className="p-4">
+        {/* Content (Dense Padding) */}
+        <div className="flex flex-1 flex-col p-3">
           {/* Category */}
-          <p className="mb-1 text-xs text-muted-foreground">
-            {product.category?.name}
+          <p className="mb-1 text-[10px] sm:text-xs text-muted-foreground truncate">
+            {product.category?.name || 'Kategori'}
           </p>
 
-          {/* Name */}
-          <h3 className="mb-2 line-clamp-2 text-sm font-medium leading-tight">
+          {/* Name - strictly 2 lines */}
+          <h3 className="mb-1 text-xs sm:text-sm font-medium leading-tight line-clamp-2 min-h-[32px] sm:min-h-[40px]">
             {product.name}
           </h3>
 
-          {/* Price */}
-          <p className="mb-3 text-lg font-bold text-primary">
-            {formatPrice(product.price)}
-          </p>
+          <div className="mt-auto pt-2">
+            {/* Strikethrough Price */}
+            <p className="text-[10px] sm:text-xs text-muted-foreground line-through decoration-red-400">
+              {formatPrice(originalPrice)}
+            </p>
+            {/* Final Price (Red) */}
+            <p className="mb-2 text-sm sm:text-base font-bold text-red-600">
+              {formatPrice(product.price)}
+            </p>
 
-          {/* Stock info */}
-          <div className="mb-3 flex items-center gap-1 text-xs text-muted-foreground">
-            <Package className="h-3 w-3" />
-            <span>Stok: {product.stock}</span>
+            {/* Add to cart button */}
+            <Button
+              onClick={handleAddToCart}
+              disabled={isOutOfStock}
+              className={`w-full gap-1.5 h-8 sm:h-9 text-xs sm:text-sm font-semibold transition-colors ${isOutOfStock ? 'bg-muted text-muted-foreground' : 'bg-primary text-primary-foreground hover:bg-primary/90'
+                }`}
+              size="sm"
+            >
+              <ShoppingCart className="h-3.5 w-3.5" />
+              {isOutOfStock ? 'Habis' : '+ Keranjang'}
+            </Button>
           </div>
-
-          {/* Add to cart button */}
-          <Button
-            onClick={handleAddToCart}
-            disabled={isOutOfStock}
-            className="w-full gap-2"
-            size="sm"
-          >
-            <ShoppingCart className="h-4 w-4" />
-            {isOutOfStock ? 'Stok Habis' : 'Tambah'}
-          </Button>
         </div>
       </div>
     </Link>

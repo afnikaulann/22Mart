@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Filter, Package, Search, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -20,9 +20,32 @@ const sortOptions = [
 ];
 
 export default function ProductsPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-muted/30">
+        <div className="container mx-auto px-4 py-8">
+          <div className="mb-8 h-8 w-48 animate-pulse rounded bg-muted" />
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="space-y-3">
+                <div className="aspect-square animate-pulse rounded-xl bg-muted" />
+                <div className="h-4 w-3/4 animate-pulse rounded bg-muted" />
+                <div className="h-4 w-1/2 animate-pulse rounded bg-muted" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    }>
+      <ProductsContent />
+    </Suspense>
+  );
+}
+
+function ProductsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  
+
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [pagination, setPagination] = useState<Pagination | null>(null);
@@ -71,7 +94,8 @@ export default function ProductsPage() {
 
   const updateParams = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
-    if (value) {
+    // 'all' is the sentinel for "no filter" (Radix forbids empty-string values)
+    if (value && value !== 'all') {
       params.set(key, value);
     } else {
       params.delete(key);
@@ -119,12 +143,12 @@ export default function ProductsPage() {
 
             {/* Category filter - Desktop */}
             <div className="hidden lg:block">
-              <Select value={categoryId} onValueChange={(value) => updateParams('categoryId', value)}>
+              <Select value={categoryId || 'all'} onValueChange={(value) => updateParams('categoryId', value)}>
                 <SelectTrigger className="w-[200px]">
                   <SelectValue placeholder="Semua Kategori" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Semua Kategori</SelectItem>
+                  <SelectItem value="all">Semua Kategori</SelectItem>
                   {categories.map((category) => (
                     <SelectItem key={category.id} value={category.id}>
                       {category.name}
@@ -173,12 +197,12 @@ export default function ProductsPage() {
             <div className="space-y-4">
               <div>
                 <label className="mb-2 block text-sm font-medium">Kategori</label>
-                <Select value={categoryId} onValueChange={(value) => updateParams('categoryId', value)}>
+                <Select value={categoryId || 'all'} onValueChange={(value) => updateParams('categoryId', value)}>
                   <SelectTrigger>
                     <SelectValue placeholder="Semua Kategori" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Semua Kategori</SelectItem>
+                    <SelectItem value="all">Semua Kategori</SelectItem>
                     {categories.map((category) => (
                       <SelectItem key={category.id} value={category.id}>
                         {category.name}

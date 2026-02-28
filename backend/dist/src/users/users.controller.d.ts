@@ -6,26 +6,62 @@ export declare class UsersController {
     constructor(usersService: UsersService);
     updateProfile(userId: string, dto: UpdateProfileDto): Promise<{
         message: string;
-        user: any;
+        user: {
+            id: string;
+            email: string;
+            name: string;
+            phone: string | null;
+            address: string | null;
+            avatar: string | null;
+            role: import("@prisma/client").$Enums.Role;
+        };
     }>;
     changePassword(userId: string, dto: ChangePasswordDto): Promise<{
         message: string;
     }>;
     findAll(page?: string, limit?: string, search?: string, role?: Role): Promise<{
-        users: any;
+        users: {
+            id: string;
+            email: string;
+            name: string;
+            phone: string | null;
+            role: import("@prisma/client").$Enums.Role;
+            createdAt: Date;
+            _count: {
+                orders: number;
+            };
+        }[];
         pagination: {
             page: number;
             limit: number;
-            total: any;
+            total: number;
             totalPages: number;
         };
     }>;
     getStats(): Promise<{
-        totalUsers: any;
-        totalAdmins: any;
-        newUsersThisMonth: any;
+        totalUsers: number;
+        totalAdmins: number;
+        newUsersThisMonth: number;
     }>;
-    findOne(id: string): Promise<any>;
+    findOne(id: string): Promise<{
+        id: string;
+        email: string;
+        name: string;
+        phone: string | null;
+        address: string | null;
+        role: import("@prisma/client").$Enums.Role;
+        createdAt: Date;
+        orders: {
+            id: string;
+            createdAt: Date;
+            orderNumber: string;
+            status: import("@prisma/client").$Enums.OrderStatus;
+            totalAmount: number;
+        }[];
+        _count: {
+            orders: number;
+        };
+    }>;
     updateRole(id: string, role: Role): Promise<{
         message: string;
     }>;

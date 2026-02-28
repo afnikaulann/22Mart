@@ -6,10 +6,17 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <>
+      {/* Fixed navbar — always at top, out of document flow */}
       <Header />
-      <main className="flex-1">{children}</main>
+
+      {/* All page content sits below the 144px fixed navbar (topbar + main + bottom) */}
+      <main className="min-h-screen pt-[144px]">
+        {children}
+      </main>
+
       <Footer />
-    </div>
+    </>
   );
 }
+

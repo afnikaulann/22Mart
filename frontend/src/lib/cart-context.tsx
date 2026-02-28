@@ -47,7 +47,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const addToCart = async (productId: string, quantity = 1) => {
     if (!isAuthenticated) {
-      toast.error('Silakan login terlebih dahulu');
+      window.location.href = `/login?callbackUrl=${encodeURIComponent(window.location.pathname)}`;
       return;
     }
 

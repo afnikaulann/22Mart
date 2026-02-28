@@ -1,7 +1,8 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { Eye, EyeOff, Loader2, Mail, Lock } from 'lucide-react';
@@ -15,7 +16,28 @@ interface LoginForm {
 }
 
 export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="w-full max-w-md">
+        <div className="rounded-2xl border bg-card p-8 shadow-lg animate-pulse">
+          <div className="h-8 bg-muted rounded mb-6" />
+          <div className="space-y-4">
+            <div className="h-12 bg-muted rounded" />
+            <div className="h-12 bg-muted rounded" />
+            <div className="h-12 bg-muted rounded" />
+          </div>
+        </div>
+      </div>
+    }>
+      <LoginForm />
+    </Suspense>
+  );
+}
+
+function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
   const { login } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,8 +52,8 @@ export default function LoginPage() {
     setIsLoading(true);
     try {
       await login(data.email, data.password);
-      toast.success('Login berhasil!');
-      router.push('/');
+      toast.success('Login berhasil! Selamat datang kembali 👋');
+      router.push(callbackUrl);
     } catch (error: any) {
       const message = error.response?.data?.message || 'Login gagal. Silakan coba lagi.';
       toast.error(message);
@@ -43,7 +65,13 @@ export default function LoginPage() {
   return (
     <div className="w-full max-w-md">
       <div className="rounded-2xl border bg-card p-8 shadow-lg">
+        {/* Logo */}
         <div className="mb-8 text-center">
+          <Link href="/" className="inline-block mb-4 text-2xl font-extrabold tracking-tight">
+            <span className="text-primary">22</span>
+            <span className="text-secondary">mart</span>
+            <span className="text-primary">.id</span>
+          </Link>
           <h1 className="text-2xl font-bold">Selamat Datang Kembali</h1>
           <p className="mt-2 text-muted-foreground">
             Masuk ke akun Anda untuk melanjutkan belanja
@@ -110,16 +138,6 @@ export default function LoginPage() {
             )}
           </div>
 
-          {/* Forgot password */}
-          <div className="text-right">
-            <Link
-              href="/forgot-password"
-              className="text-sm text-primary hover:underline"
-            >
-              Lupa password?
-            </Link>
-          </div>
-
           {/* Submit */}
           <Button type="submit" className="w-full" size="lg" disabled={isLoading}>
             {isLoading ? (
@@ -132,6 +150,11 @@ export default function LoginPage() {
             )}
           </Button>
         </form>
+
+        {/* Demo hint */}
+        <div className="mt-4 rounded-lg bg-muted/60 px-4 py-3 text-sm text-muted-foreground">
+          💡 <span className="font-medium">Demo:</span> Masukkan email dan password apapun untuk mencoba.
+        </div>
 
         {/* Register link */}
         <p className="mt-6 text-center text-sm text-muted-foreground">

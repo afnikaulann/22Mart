@@ -1,7 +1,8 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { Eye, EyeOff, Loader2, Mail, Lock, User, Phone } from 'lucide-react';
@@ -18,7 +19,26 @@ interface RegisterForm {
 }
 
 export default function RegisterPage() {
+  return (
+    <Suspense fallback={
+      <div className="w-full max-w-md">
+        <div className="rounded-2xl border bg-card p-8 shadow-lg animate-pulse">
+          <div className="h-8 bg-muted rounded mb-6" />
+          <div className="space-y-4">
+            {Array.from({ length: 5 }).map((_, i) => <div key={i} className="h-12 bg-muted rounded" />)}
+          </div>
+        </div>
+      </div>
+    }>
+      <RegisterForm />
+    </Suspense>
+  );
+}
+
+function RegisterForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
   const { register: registerUser } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -42,8 +62,8 @@ export default function RegisterPage() {
         password: data.password,
         phone: data.phone,
       });
-      toast.success('Registrasi berhasil!');
-      router.push('/');
+      toast.success('Registrasi berhasil! Selamat datang di 22mart 🎉');
+      router.push(callbackUrl);
     } catch (error: any) {
       const message = error.response?.data?.message || 'Registrasi gagal. Silakan coba lagi.';
       toast.error(message);
@@ -55,7 +75,13 @@ export default function RegisterPage() {
   return (
     <div className="w-full max-w-md">
       <div className="rounded-2xl border bg-card p-8 shadow-lg">
+        {/* Logo */}
         <div className="mb-8 text-center">
+          <Link href="/" className="inline-block mb-4 text-2xl font-extrabold tracking-tight">
+            <span className="text-primary">22</span>
+            <span className="text-secondary">mart</span>
+            <span className="text-primary">.id</span>
+          </Link>
           <h1 className="text-2xl font-bold">Buat Akun Baru</h1>
           <p className="mt-2 text-muted-foreground">
             Daftar untuk mulai berbelanja di 22mart.id

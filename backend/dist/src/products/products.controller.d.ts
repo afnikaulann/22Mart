@@ -5,32 +5,176 @@ export declare class ProductsController {
     constructor(productsService: ProductsService);
     create(dto: CreateProductDto): Promise<{
         message: string;
-        product: any;
+        product: {
+            category: {
+                id: string;
+                name: string;
+                createdAt: Date;
+                updatedAt: Date;
+                slug: string;
+                description: string | null;
+                icon: string | null;
+                image: string | null;
+                isActive: boolean;
+            };
+        } & {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            slug: string;
+            description: string | null;
+            isActive: boolean;
+            price: number;
+            stock: number;
+            images: string[];
+            categoryId: string;
+        };
     }>;
     findAll(query: QueryProductDto): Promise<{
-        products: any;
+        products: ({
+            category: {
+                id: string;
+                name: string;
+                slug: string;
+            };
+        } & {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            slug: string;
+            description: string | null;
+            isActive: boolean;
+            price: number;
+            stock: number;
+            images: string[];
+            categoryId: string;
+        })[];
         pagination: {
             page: number;
             limit: number;
-            total: any;
+            total: number;
             totalPages: number;
         };
     }>;
     findAllAdmin(query: QueryProductDto): Promise<{
-        products: any;
+        products: ({
+            category: {
+                id: string;
+                name: string;
+                slug: string;
+            };
+        } & {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            slug: string;
+            description: string | null;
+            isActive: boolean;
+            price: number;
+            stock: number;
+            images: string[];
+            categoryId: string;
+        })[];
         pagination: {
             page: number;
             limit: number;
-            total: any;
+            total: number;
             totalPages: number;
         };
     }>;
-    getFeaturedProducts(limit?: string): Promise<any>;
-    findOne(slug: string): Promise<any>;
-    getRelatedProducts(id: string, limit?: string): Promise<any>;
+    getFeaturedProducts(limit?: string): Promise<({
+        category: {
+            id: string;
+            name: string;
+            slug: string;
+        };
+    } & {
+        id: string;
+        name: string;
+        createdAt: Date;
+        updatedAt: Date;
+        slug: string;
+        description: string | null;
+        isActive: boolean;
+        price: number;
+        stock: number;
+        images: string[];
+        categoryId: string;
+    })[]>;
+    findOne(slug: string): Promise<{
+        category: {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            slug: string;
+            description: string | null;
+            icon: string | null;
+            image: string | null;
+            isActive: boolean;
+        };
+    } & {
+        id: string;
+        name: string;
+        createdAt: Date;
+        updatedAt: Date;
+        slug: string;
+        description: string | null;
+        isActive: boolean;
+        price: number;
+        stock: number;
+        images: string[];
+        categoryId: string;
+    }>;
+    getRelatedProducts(id: string, limit?: string): Promise<({
+        category: {
+            id: string;
+            name: string;
+            slug: string;
+        };
+    } & {
+        id: string;
+        name: string;
+        createdAt: Date;
+        updatedAt: Date;
+        slug: string;
+        description: string | null;
+        isActive: boolean;
+        price: number;
+        stock: number;
+        images: string[];
+        categoryId: string;
+    })[]>;
     update(id: string, dto: UpdateProductDto): Promise<{
         message: string;
-        product: any;
+        product: {
+            category: {
+                id: string;
+                name: string;
+                createdAt: Date;
+                updatedAt: Date;
+                slug: string;
+                description: string | null;
+                icon: string | null;
+                image: string | null;
+                isActive: boolean;
+            };
+        } & {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            slug: string;
+            description: string | null;
+            isActive: boolean;
+            price: number;
+            stock: number;
+            images: string[];
+            categoryId: string;
+        };
     }>;
     remove(id: string): Promise<{
         message: string;

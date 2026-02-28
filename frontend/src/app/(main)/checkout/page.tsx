@@ -98,7 +98,7 @@ export default function CheckoutPage() {
 
       toast.success('Pesanan berhasil dibuat!');
       await refreshCart();
-      router.push(`/orders/${response.data.order.id}`);
+      router.push(`/orders/${response.data.id}`);
     } catch (error: any) {
       const message = error.response?.data?.message || 'Gagal membuat pesanan';
       toast.error(message);
@@ -198,11 +198,10 @@ export default function CheckoutPage() {
                   {paymentMethods.map((method) => (
                     <label
                       key={method.value}
-                      className={`flex cursor-pointer items-center gap-4 rounded-lg border p-4 transition-colors ${
-                        selectedPaymentMethod === method.value
+                      className={`flex cursor-pointer items-center gap-4 rounded-lg border p-4 transition-colors ${selectedPaymentMethod === method.value
                           ? 'border-primary bg-primary/5'
                           : 'hover:border-muted-foreground'
-                      }`}
+                        }`}
                     >
                       <input
                         type="radio"
@@ -211,11 +210,10 @@ export default function CheckoutPage() {
                         {...register('paymentMethod')}
                       />
                       <div
-                        className={`flex h-10 w-10 items-center justify-center rounded-full ${
-                          selectedPaymentMethod === method.value
+                        className={`flex h-10 w-10 items-center justify-center rounded-full ${selectedPaymentMethod === method.value
                             ? 'bg-primary text-primary-foreground'
                             : 'bg-muted'
-                        }`}
+                          }`}
                       >
                         <method.icon className="h-5 w-5" />
                       </div>
