@@ -1,133 +1,71 @@
 'use client';
 
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="border-t bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
-          <div>
-            <Link href="/" className="flex items-center gap-1 font-bold text-2xl mb-4">
-              <span className="text-white">22</span>
-              <span className="text-secondary">mart</span>
-              <span className="text-white">.id</span>
+    <footer className="bg-foreground text-background">
+      <div className="container mx-auto px-6 pt-32 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 lg:gap-8 mb-32">
+
+          <div className="lg:col-span-2">
+            <Link href="/" className="inline-block text-4xl font-extrabold tracking-tighter mb-8">
+              22Mart.
             </Link>
-            <p className="text-sm text-primary-foreground/80 mb-4">
-              Platform belanja online untuk kebutuhan sehari-hari. Mudah, cepat, dan terpercaya.
+            <p className="text-background/60 text-lg max-w-sm mb-10 leading-relaxed font-medium tracking-tight">
+              Eksklusivitas dalam setiap kebutuhan harian Anda. Kurasi premium, layanan tanpa kompromi.
             </p>
             <div className="flex gap-4">
-              <a
-                href="#"
-                className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20"
-              >
+              <a href="#" className="h-12 w-12 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-foreground transition-all duration-300">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a
-                href="#"
-                className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20"
-              >
+              <a href="#" className="h-12 w-12 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-foreground transition-all duration-300">
                 <Twitter className="h-5 w-5" />
+              </a>
+              <a href="#" className="h-12 w-12 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-foreground transition-all duration-300">
+                <Facebook className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* Links */}
           <div>
-            <h3 className="mb-4 font-semibold text-lg">Belanja</h3>
-            <ul className="space-y-2 text-sm text-primary-foreground/80">
-              <li>
-                <Link href="/products" className="hover:text-white transition-colors">
-                  Semua Produk
-                </Link>
-              </li>
-              <li>
-                <Link href="/categories" className="hover:text-white transition-colors">
-                  Kategori
-                </Link>
-              </li>
-              <li>
-                <Link href="/products?sortBy=newest" className="hover:text-white transition-colors">
-                  Produk Terbaru
-                </Link>
-              </li>
-              <li>
-                <Link href="/products?sortBy=price_low" className="hover:text-white transition-colors">
-                  Promo
-                </Link>
-              </li>
+            <h3 className="font-bold text-lg mb-8 tracking-tight">Eksplorasi</h3>
+            <ul className="space-y-5 text-background/60 font-medium">
+              <li><Link href="/products" className="hover:text-background transition-colors">Koleksi Terbaru</Link></li>
+              <li><Link href="/categories" className="hover:text-background transition-colors">Kategori Premium</Link></li>
+              <li><Link href="/products?promo=true" className="hover:text-background transition-colors">Penawaran Eksklusif</Link></li>
+              <li><Link href="/about" className="hover:text-background transition-colors">Tentang Kami</Link></li>
             </ul>
           </div>
 
-          {/* Account */}
           <div>
-            <h3 className="mb-4 font-semibold text-lg">Akun</h3>
-            <ul className="space-y-2 text-sm text-primary-foreground/80">
-              <li>
-                <Link href="/login" className="hover:text-white transition-colors">
-                  Masuk
-                </Link>
-              </li>
-              <li>
-                <Link href="/register" className="hover:text-white transition-colors">
-                  Daftar
-                </Link>
-              </li>
-              <li>
-                <Link href="/orders" className="hover:text-white transition-colors">
-                  Pesanan Saya
-                </Link>
-              </li>
-              <li>
-                <Link href="/cart" className="hover:text-white transition-colors">
-                  Keranjang
-                </Link>
-              </li>
+            <h3 className="font-bold text-lg mb-8 tracking-tight">Akun</h3>
+            <ul className="space-y-5 text-background/60 font-medium">
+              <li><Link href="/login" className="hover:text-background transition-colors">Masuk</Link></li>
+              <li><Link href="/register" className="hover:text-background transition-colors">Daftar Keanggotaan</Link></li>
+              <li><Link href="/orders" className="hover:text-background transition-colors">Pesanan Saya</Link></li>
+              <li><Link href="/cart" className="hover:text-background transition-colors">Keranjang</Link></li>
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h3 className="mb-4 font-semibold text-lg">Hubungi Kami</h3>
-            <ul className="space-y-3 text-sm text-primary-foreground/80">
-              <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 flex-shrink-0" />
-                <span>Jl. Contoh No. 123, Kota, Indonesia</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 flex-shrink-0" />
-                <span>+62 812 3456 7890</span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 flex-shrink-0" />
-                <span>info@22mart.id</span>
-              </li>
+            <h3 className="font-bold text-lg mb-8 tracking-tight">Layanan</h3>
+            <ul className="space-y-5 text-background/60 font-medium">
+              <li><button className="hover:text-background transition-colors">Hubungi Kami</button></li>
+              <li><Link href="/faq" className="hover:text-background transition-colors">FAQ</Link></li>
+              <li><Link href="/shipping" className="hover:text-background transition-colors">Pengiriman & Pengembalian</Link></li>
+              <li><Link href="/privacy" className="hover:text-background transition-colors">Kebijakan Privasi</Link></li>
             </ul>
           </div>
+
         </div>
-      </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-white/10">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col items-center justify-between gap-4 text-center text-sm text-primary-foreground/60 md:flex-row">
-            <p>&copy; {new Date().getFullYear()} 22mart.id. All rights reserved.</p>
-            <div className="flex gap-6">
-              <Link href="/terms" className="hover:text-white transition-colors">
-                Syarat & Ketentuan
-              </Link>
-              <Link href="/privacy" className="hover:text-white transition-colors">
-                Kebijakan Privasi
-              </Link>
-            </div>
+        <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-background/40 text-sm font-medium">
+          <p>&copy; {new Date().getFullYear()} 22Mart. Hak cipta dilindungi.</p>
+          <div className="flex gap-8">
+            <Link href="/terms" className="hover:text-background transition-colors">Syarat & Ketentuan</Link>
+            <Link href="/privacy" className="hover:text-background transition-colors">Privasi</Link>
           </div>
         </div>
       </div>

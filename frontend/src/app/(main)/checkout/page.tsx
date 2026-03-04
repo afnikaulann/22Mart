@@ -14,6 +14,9 @@ import {
   ShoppingCart,
   Truck,
   Wallet,
+  UploadCloud,
+  QrCode,
+  Building,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -55,6 +58,9 @@ export default function CheckoutPage() {
   const { user, isAuthenticated, isLoading: authLoading } = useAuth();
   const { cart, isLoading: cartLoading, refreshCart } = useCart();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [receiptFile, setReceiptFile] = useState<File | null>(null);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [pendingOrderData, setPendingOrderData] = useState<CheckoutForm | null>(null);
 
   const {
     register,
@@ -88,6 +94,18 @@ export default function CheckoutPage() {
       return;
     }
 
+    if (data.paymentMethod !== 'COD') {
+      // Don't submit yet, show the payment modal first
+      setPendingOrderData(data);
+      setShowPaymentModal(true);
+      return;
+    }
+
+    // If COD, submit immediately
+    await processOrder(data);
+  };
+
+  const processOrder = async (data: CheckoutForm) => {
     setIsSubmitting(true);
     try {
       const response = await ordersApi.create({
@@ -98,12 +116,23 @@ export default function CheckoutPage() {
 
       toast.success('Pesanan berhasil dibuat!');
       await refreshCart();
+      setShowPaymentModal(false);
       router.push(`/orders/${response.data.id}`);
     } catch (error: any) {
       const message = error.response?.data?.message || 'Gagal membuat pesanan';
       toast.error(message);
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const confirmPayment = async () => {
+    if (!receiptFile) {
+      toast.error('Harap unggah bukti pembayaran Anda');
+      return;
+    }
+    if (pendingOrderData) {
+      await processOrder(pendingOrderData);
     }
   };
 
@@ -199,8 +228,8 @@ export default function CheckoutPage() {
                     <label
                       key={method.value}
                       className={`flex cursor-pointer items-center gap-4 rounded-lg border p-4 transition-colors ${selectedPaymentMethod === method.value
-                          ? 'border-primary bg-primary/5'
-                          : 'hover:border-muted-foreground'
+                        ? 'border-primary bg-primary/5'
+                        : 'hover:border-muted-foreground'
                         }`}
                     >
                       <input
@@ -211,8 +240,8 @@ export default function CheckoutPage() {
                       />
                       <div
                         className={`flex h-10 w-10 items-center justify-center rounded-full ${selectedPaymentMethod === method.value
-                            ? 'bg-primary text-primary-foreground'
-                            : 'bg-muted'
+                          ? 'bg-primary text-primary-foreground'
+                          : 'bg-muted'
                           }`}
                       >
                         <method.icon className="h-5 w-5" />
@@ -311,6 +340,95 @@ export default function CheckoutPage() {
             </div>
           </div>
         </form>
+
+        {/* ── PAYMENT MODAL (Water Bubble Effect) ── */}
+        {showPaymentModal && pendingOrderData && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-300">
+            <div className="bg-background w-full max-w-[400px] rounded-3xl shadow-2xl overflow-hidden animate-in zoom-in-50 duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
+              <div className="p-4 border-b border-border flex items-center bg-muted/30">
+                <Button variant="ghost" size="icon" className="rounded-full h-8 w-8 mr-3 hover:bg-muted" onClick={() => setShowPaymentModal(false)}>
+                  <ArrowLeft className="h-4 w-4" />
+                </Button>
+                <h2 className="text-lg font-bold">
+                  {selectedPaymentMethod === 'TRANSFER' ? 'Transfer Bank' : 'Pembayaran E-Wallet'}
+                </h2>
+              </div>
+
+              <div className="p-5 space-y-5">
+                {selectedPaymentMethod === 'TRANSFER' && (
+                  <div className="p-4 rounded-2xl border border-border bg-card shadow-sm">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                        <Building className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-base">Bank BCA</h3>
+                        <p className="text-xs text-muted-foreground">a.n 22Mart Official</p>
+                      </div>
+                    </div>
+                    <div className="bg-muted/50 p-3 rounded-xl border flex items-center justify-between font-mono text-lg font-black text-primary tracking-wider">
+                      <span>8273 1928 338</span>
+                      <Button type="button" variant="outline" size="sm" className="h-7 text-xs px-3 rounded-full" onClick={() => toast.success('Nomor rekening disalin!')}>Salin</Button>
+                    </div>
+                    <div className="mt-3 flex justify-between items-center text-sm">
+                      <span className="text-muted-foreground font-medium">Total Tagihan</span>
+                      <span className="font-bold text-foreground">{formatPrice(cart?.totalAmount || 0)}</span>
+                    </div>
+                  </div>
+                )}
+
+                {selectedPaymentMethod === 'EWALLET' && (
+                  <div className="p-4 rounded-2xl border border-border bg-card shadow-sm flex flex-col items-center justify-center text-center">
+                    <p className="font-medium mb-3 text-xs text-muted-foreground">Scan QRIS Berikut untuk Pembayaran E-Wallet</p>
+                    <div className="bg-white p-3 rounded-2xl border shadow-sm flex flex-col items-center">
+                      <QrCode className="h-32 w-32 text-foreground" strokeWidth={1} />
+                      <p className="mt-3 text-[10px] font-bold font-mono tracking-widest px-3 py-1 bg-muted rounded-full">NMID: ID2024000123</p>
+                    </div>
+                    <div className="mt-4 w-full flex justify-between items-center text-sm px-2">
+                      <span className="text-muted-foreground font-medium">Total Tagihan</span>
+                      <span className="font-bold text-foreground">{formatPrice(cart?.totalAmount || 0)}</span>
+                    </div>
+                  </div>
+                )}
+
+                <div>
+                  <h3 className="font-bold mb-2 text-sm">Konfirmasi Pembayaran</h3>
+                  <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-border rounded-xl cursor-pointer bg-muted/20 hover:bg-muted/40 transition-colors group">
+                    <div className="flex flex-col items-center justify-center pt-4 pb-4">
+                      <UploadCloud className="w-6 h-6 mb-2 text-muted-foreground group-hover:text-primary transition-colors" />
+                      <p className="mb-1 text-xs text-muted-foreground">
+                        <span className="font-semibold text-primary">Klik unggah</span> bukti
+                      </p>
+                      <p className="text-[10px] text-muted-foreground font-medium truncate max-w-[200px]">{receiptFile ? receiptFile.name : "PNG, JPG/PDF (<5MB)"}</p>
+                    </div>
+                    <input
+                      type="file"
+                      className="hidden"
+                      accept="image/png, image/jpeg, application/pdf"
+                      onChange={(e) => {
+                        if (e.target.files?.[0]) {
+                          setReceiptFile(e.target.files[0]);
+                          toast.success('Bukti pembayaran dilampirkan');
+                        }
+                      }}
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div className="p-5 border-t border-border bg-card">
+                <Button
+                  className="w-full rounded-xl h-11 font-bold bg-primary text-white"
+                  onClick={confirmPayment}
+                  disabled={isSubmitting || !receiptFile}
+                >
+                  {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Konfirmasi Pesanan'}
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
   );

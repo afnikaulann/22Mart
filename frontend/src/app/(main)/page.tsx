@@ -1,49 +1,23 @@
 'use client';
 
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from 'react';
-import {
-  ArrowRight,
-  Truck,
-  Shield,
-  Clock,
-  Package,
-  Apple,
-  Coffee,
-  Milk,
-  Cookie,
-  SprayCan,
-  Baby,
-  ShoppingBag,
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { ProductCard } from '@/components/products/product-card';
-import { categoriesApi, productsApi } from '@/lib/api';
-import { Category, Product } from '@/types';
+import { ArrowRight, Star, Truck, ShieldCheck, Clock, Package, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ProductCard } from "@/components/products/product-card";
+import { productsApi } from '@/lib/api';
+import { Product } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
 
-const categoryIcons: Record<string, any> = {
-  makanan: Apple,
-  minuman: Coffee,
-  susu: Milk,
-  snack: Cookie,
-  kebersihan: SprayCan,
-  bayi: Baby,
-};
-
-export default function HomePage() {
-  const [categories, setCategories] = useState<Category[]>([]);
+export default function Home() {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [categoriesRes, productsRes] = await Promise.all([
-          categoriesApi.getAll(),
-          productsApi.getFeatured(12), // fetch more for denser grid
-        ]);
-        setCategories(categoriesRes.data);
+        const productsRes = await productsApi.getFeatured(8);
         setFeaturedProducts(productsRes.data);
       } catch (error) {
         console.error('Failed to fetch data:', error);
@@ -55,214 +29,181 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f4f4f4]">
-      {/* ── Retail Hero Section (Alfagift/Supermarket Style) ──────────────── */}
-      <section className="bg-white border-b overflow-hidden relative">
-        <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-gradient-to-l from-[#fffaf0] to-transparent z-0 hidden lg:block" />
-        <div className="container mx-auto px-4 py-8 lg:py-16 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="max-w-xl text-center lg:text-left">
-              <span className="inline-block py-1 px-3 rounded-full bg-secondary/20 text-secondary-foreground text-sm font-bold mb-4 border border-secondary/30 shadow-sm">
-                Rekomendasi Minggu Ini
-              </span>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.1] mb-4 tracking-tight">
-                Belanja Bulanan <br className="hidden md:block" />
-                <span className="text-primary italic">Lebih Hemat</span>
-              </h1>
-              <p className="text-muted-foreground text-base md:text-lg mb-8 max-w-md mx-auto lg:mx-0">
-                Penuhi kebutuhan dapur dan keluarga dengan harga grosir. Gratis ongkir khusus member baru!
-              </p>
-              <div className="flex items-center justify-center lg:justify-start gap-4">
-                <Button size="lg" asChild className="h-12 px-8 rounded-full font-bold text-base shadow-md hover:-translate-y-0.5 transition-transform bg-primary text-primary-foreground hover:bg-primary/90">
-                  <Link href="/products">Mulai Belanja</Link>
-                </Button>
-                <Button size="lg" variant="outline" asChild className="h-12 px-8 rounded-full font-bold text-base border-primary/20 text-primary hover:bg-primary/5">
-                  <Link href="/products?promo=true">Lihat Promo</Link>
-                </Button>
-              </div>
-            </div>
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/20">
 
-            <div className="relative shrink-0 flex items-center justify-center lg:justify-end xl:pr-12">
-              <div className="relative w-64 h-64 md:w-80 md:h-80 bg-secondary/10 rounded-full flex items-center justify-center border-4 border-white shadow-xl">
-                {/* Decorative items */}
-                <Package className="absolute top-8 left-8 h-12 w-12 text-primary opacity-30 rotate-12" />
-                <Apple className="absolute bottom-12 right-12 h-16 w-16 text-secondary opacity-40 -rotate-12" />
-                <ShoppingBag className="h-32 w-32 text-primary/80" />
+      {/* ── 1. ULTRA-HERO SECTION ────────────────────────────────────────── */}
+      <section className="relative px-6 pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden flex flex-col items-center justify-center text-center">
+        {/* Subtle Background Glows */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none z-0" />
 
-                {/* Big Discount Badge */}
-                <div className="absolute -right-4 md:-right-8 top-1/2 -translate-y-1/2 bg-red-600 text-white p-6 rounded-full shadow-2xl rotate-[15deg] hover:rotate-0 transition-transform cursor-pointer border-4 border-white">
-                  <div className="flex flex-col items-center justify-center h-full">
-                    <span className="text-sm font-bold uppercase tracking-wider mb-[-4px]">Diskon</span>
-                    <span className="text-4xl md:text-5xl font-extrabold font-serif italic">-50%</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="relative z-10 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary mb-8 transition-transform hover:scale-105">
+          <Sparkles className="h-4 w-4" />
+          <span className="text-sm font-bold tracking-wide uppercase">Pengalaman Belanja Premium</span>
+        </div>
+
+        <h1 className="relative z-10 text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-8 max-w-5xl leading-[1.1] text-foreground">
+          Kualitas Terbaik.<br className="hidden md:block" /> Setiap Hari.
+        </h1>
+
+        <p className="relative z-10 text-lg md:text-2xl text-muted-foreground font-medium max-w-2xl mb-12">
+          Platform e-commerce dengan kurasi tingkat tinggi. Temukan kebutuhan esensial Anda dengan standar layanan tanpa kompromi.
+        </p>
+
+        <div className="relative z-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <Button size="lg" className="h-14 px-8 rounded-full bg-primary text-white hover:bg-primary/90 text-base font-bold shadow-xl transition-transform hover:scale-105">
+            Mulai Belanja
+          </Button>
+          <Button size="lg" variant="outline" className="h-14 px-8 rounded-full border-border bg-white text-foreground hover:bg-muted text-base font-bold transition-all">
+            Produk Terbaru
+          </Button>
         </div>
       </section>
 
-      {/* ── Promo Banner Carousel ────────────────────────────────────────────── */}
-      <section className="bg-white pb-6 pt-6">
-        <div className="container mx-auto px-4">
-          <div className="flex snap-x snap-mandatory overflow-x-auto gap-4 pb-4 scrollbar-hide">
-            {[1, 2, 3].map((num) => (
-              <div
-                key={num}
-                className={`
-                  relative min-w-[280px] md:min-w-[400px] lg:min-w-[500px] h-[140px] md:h-[180px] lg:h-[220px] 
-                  shrink-0 snap-center overflow-hidden rounded-2xl shadow-sm
-                  ${num === 1 ? 'bg-gradient-to-r from-red-500 to-rose-400' : ''}
-                  ${num === 2 ? 'bg-gradient-to-r from-yellow-400 to-orange-400' : ''}
-                  ${num === 3 ? 'bg-gradient-to-r from-blue-500 to-cyan-400' : ''}
-                `}
-              >
-                <div className="absolute inset-0 flex flex-col justify-center p-6 text-white">
-                  <span className="mb-1 text-xs font-bold uppercase tracking-wider bg-white/20 w-fit px-2 py-0.5 rounded-full">
-                    Promo Spesial
-                  </span>
-                  <h3 className="text-xl md:text-2xl font-bold leading-tight mb-2">
-                    {num === 1 ? 'Diskon Sembako\nHingga 40%' : ''}
-                    {num === 2 ? 'Cashback\nSetiap Hari' : ''}
-                    {num === 3 ? 'Kebutuhan Bayi\nEkstra Hemat' : ''}
-                  </h3>
-                  <Button variant="secondary" size="sm" className="w-fit h-8 rounded-full text-xs font-semibold mt-auto shadow-sm text-primary hover:bg-white/90">
-                    Cek Sekarang <ArrowRight className="ml-1 h-3 w-3" />
-                  </Button>
-                </div>
-              </div>
-            ))}
+      {/* ── 2. BENTO BOX CATEGORY GRID ───────────────────────────────────── */}
+      <section className="px-6 py-16 max-w-[1200px] mx-auto">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-8 gap-6">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Eksplorasi</h2>
+            <p className="text-xl text-muted-foreground font-medium">Kategori pilihan kami untuk gaya hidup Anda.</p>
           </div>
-        </div>
-      </section>
-
-      {/* ── Kategori (Horizontal Scrollable Rak) ────────────────────────────── */}
-      <section className="bg-white py-6 mt-2 shadow-sm rounded-t-2xl">
-        <div className="container mx-auto px-4">
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-lg font-bold">Kategori Pilihan</h2>
-            <Link href="/categories" className="text-sm font-semibold text-primary hover:underline">
-              Lihat Semua
+          <Button asChild variant="link" className="text-foreground text-lg p-0 h-auto font-semibold hover:text-primary group">
+            <Link href="/categories">
+              Semua Kategori <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Link>
+          </Button>
+        </div>
+
+        {/* Bento Grid layout */}
+        <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[400px]">
+
+          {/* Main Large Box */}
+          <Link href="/products?category=segar" className="group relative overflow-hidden rounded-[1.5rem] bg-muted/50 md:col-span-2 md:row-span-2">
+            <Image
+              src="https://images.unsplash.com/photo-1608686207856-001b95cf60ca?q=80&w=1200&auto=format&fit=crop"
+              alt="Produk Segar"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-6 left-6 text-white">
+              <h3 className="text-2xl font-bold tracking-tight mb-1">Produk Segar</h3>
+              <p className="text-white/80 text-sm font-medium">Sayuran & Buah Petani Lokal</p>
+            </div>
+          </Link>
+
+          {/* Top Right Box */}
+          <Link href="/products?category=daging" className="group relative overflow-hidden rounded-[1.5rem] bg-muted/50 md:col-span-2 md:row-span-1">
+            <Image
+              src="https://images.unsplash.com/photo-1603048297172-c92544798d5e?q=80&w=800&auto=format&fit=crop"
+              alt="Daging Premium"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute bottom-4 left-4 text-white">
+              <h3 className="text-xl font-bold tracking-tight mb-0">Daging Premium</h3>
+            </div>
+          </Link>
+
+          {/* Bottom Right Box */}
+          <Link href="/products?category=kopi" className="group relative overflow-hidden rounded-[1.5rem] bg-primary/5 md:col-span-2 md:row-span-1 flex flex-col justify-end p-6 border border-border/50 hover:border-primary/20 transition-colors">
+            <div className="relative z-10">
+              <Star className="h-8 w-8 text-primary mb-3 fill-primary/20" />
+              <h3 className="text-xl font-bold tracking-tight mb-1">Kurasi Khusus</h3>
+              <p className="text-muted-foreground text-sm font-medium">Temukan produk langka berkualitas.</p>
+            </div>
+          </Link>
+
+        </div>
+      </section>
+
+      {/* ── 3. FEATURED PRODUCTS (Invisible Borders) ─────────────────────── */}
+      <section className="px-6 py-20 bg-muted/30">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Pilihan Eksklusif</h2>
+            <p className="text-xl text-muted-foreground font-medium max-w-2xl mx-auto">Tingkatkan standar harian Anda dengan koleksi produk terbaik yang kami kurasi khusus untuk Anda.</p>
           </div>
 
           {isLoading ? (
-            <div className="flex gap-4 overflow-x-hidden">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
               {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="flex shrink-0 flex-col items-center gap-2">
-                  <Skeleton className="h-16 w-16 md:h-20 md:w-20 rounded-2xl" />
-                  <Skeleton className="h-3 w-12" />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="flex snap-x snap-mandatory overflow-x-auto gap-4 pb-4 scrollbar-hide">
-              {categories.map((category) => {
-                const Icon = categoryIcons[category.slug.toLowerCase()] || Package;
-                return (
-                  <Link
-                    key={category.id}
-                    href={`/products?categoryId=${category.id}`}
-                    className="group flex min-w-[72px] shrink-0 snap-start flex-col items-center gap-2"
-                  >
-                    <div className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-2xl border bg-card transition-all group-hover:border-primary group-hover:bg-primary/5 group-hover:shadow-sm">
-                      <Icon className="h-7 w-7 md:h-8 md:w-8 text-foreground group-hover:text-primary transition-colors" />
-                    </div>
-                    <span className="text-center text-[11px] md:text-xs font-medium leading-tight max-w-[72px] md:max-w-[80px]">
-                      {category.name}
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ── Keunggulan ──────────────────────────────────────────────────────── */}
-      <section className="bg-white py-4 border-b">
-        <div className="container mx-auto px-4">
-          <div className="flex overflow-x-auto gap-4 scrollbar-hide snap-x">
-            {[
-              { icon: Truck, title: 'Gratis Ongkir', sub: 'Min. Rp 100rb' },
-              { icon: Clock, title: 'Pengiriman', sub: 'Cepat & Aman' },
-              { icon: Shield, title: 'Pembayaran', sub: '100% Aman' },
-            ].map(({ icon: Icon, title, sub }) => (
-              <div key={title} className="flex min-w-[180px] snap-center items-center gap-3 rounded-xl bg-[#f8f9fa] p-3 border">
-                <div className="rounded-full bg-primary/10 p-2 text-primary">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold leading-tight">{title}</p>
-                  <p className="text-[10px] text-muted-foreground">{sub}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Produk Terbaru (Grid Padat) ─────────────────────────────────────── */}
-      <section className="bg-white py-8 lg:py-10 mt-2">
-        <div className="container mx-auto px-4">
-          <div className="mb-6 flex items-center justify-between">
-            <div>
-              <h2 className="text-xl md:text-2xl font-bold">Lagi Promo Nih!</h2>
-              <p className="text-xs md:text-sm text-muted-foreground">Harga miring khusus hari ini</p>
-            </div>
-            <Link href="/products" className="text-sm font-semibold text-primary hover:underline">
-              Lihat Semua
-            </Link>
-          </div>
-
-          {isLoading ? (
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="space-y-3 rounded-xl border p-3">
-                  <Skeleton className="aspect-square rounded-lg" />
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-2/3" />
-                  <Skeleton className="h-8 w-full rounded-md" />
+                <div key={i} className="space-y-4">
+                  <Skeleton className="aspect-square rounded-3xl" />
+                  <Skeleton className="h-4 w-3/4" />
+                  <Skeleton className="h-4 w-1/2" />
                 </div>
               ))}
             </div>
           ) : featuredProducts.length > 0 ? (
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
               {featuredProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
           ) : (
             <div className="py-12 text-center">
-              <Package className="mx-auto h-12 w-12 text-muted-foreground" />
-              <p className="mt-4 text-sm text-muted-foreground">Belum ada produk tersedia</p>
+              <Package className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+              <p className="text-lg text-muted-foreground font-medium">Koleksi sedang diperbarui.</p>
             </div>
           )}
+
+          <div className="mt-20 flex justify-center">
+            <Button asChild size="lg" variant="outline" className="rounded-full h-14 px-10 text-lg font-semibold border-border hover:bg-foreground hover:text-background transition-all">
+              <Link href="/products">Lihat Seluruh Koleksi</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* ── CTA / Daftar (Supermarket feel) ─────────────────────────────────── */}
-      <section className="bg-white py-12 lg:py-16 mt-2 border-t">
-        <div className="container mx-auto px-4">
-          <div className="overflow-hidden rounded-3xl bg-primary p-8 lg:p-12 shadow-lg relative">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-y-1/2 translate-x-1/2" />
-            <div className="mx-auto max-w-xl text-center relative z-10">
-              <h2 className="mb-3 text-2xl md:text-3xl font-bold text-white leading-tight">
-                Belanja Bulanan Jadi<br />Lebih Mudah & Murah
-              </h2>
-              <p className="mb-8 text-sm md:text-base text-white/90">
-                Daftar sekarang dan nikmati gratis ongkir, promo harian, dan cashback menanti!
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-3">
-                <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-white font-bold rounded-xl shadow-md h-12">
-                  <Link href="/register">Daftar Sekarang</Link>
-                </Button>
-                <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-100 font-bold rounded-xl shadow-sm h-12">
-                  <Link href="/login">Masuk ke Akun</Link>
-                </Button>
-              </div>
+      {/* ── 4. BRAND PROMISES (Structured Cards) ─────────────────────────── */}
+      <section className="px-6 py-24 max-w-[1200px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+          <div className="flex flex-col items-center space-y-4 p-8 rounded-3xl bg-white border border-border/60 shadow-sm hover:shadow-md transition-shadow">
+            <div className="h-16 w-16 rounded-full bg-secondary/20 flex items-center justify-center text-secondary-foreground mb-2">
+              <Clock className="h-7 w-7" strokeWidth={1.5} />
             </div>
+            <h3 className="text-xl font-bold tracking-tight">Pengiriman Cepat</h3>
+            <p className="text-muted-foreground font-medium text-base">Layanan antar instan dan same-day delivery untuk kenyamanan Anda.</p>
           </div>
+
+          <div className="flex flex-col items-center space-y-4 p-8 rounded-3xl bg-white border border-border/60 shadow-sm hover:shadow-md transition-shadow">
+            <div className="h-16 w-16 rounded-full bg-secondary/20 flex items-center justify-center text-secondary-foreground mb-2">
+              <ShieldCheck className="h-7 w-7" strokeWidth={1.5} />
+            </div>
+            <h3 className="text-xl font-bold tracking-tight">Kualitas Terjamin</h3>
+            <p className="text-muted-foreground font-medium text-base">Standar QC ketat untuk memastikan hanya yang terbaik yang Anda terima.</p>
+          </div>
+
+          <div className="flex flex-col items-center space-y-4 p-8 rounded-3xl bg-white border border-border/60 shadow-sm hover:shadow-md transition-shadow">
+            <div className="h-16 w-16 rounded-full bg-secondary/20 flex items-center justify-center text-secondary-foreground mb-2">
+              <Truck className="h-7 w-7" strokeWidth={1.5} />
+            </div>
+            <h3 className="text-xl font-bold tracking-tight">Gratis Ongkos Kirim</h3>
+            <p className="text-muted-foreground font-medium text-base">Bebas biaya pengiriman untuk semua pesanan di atas Rp 150.000.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. EMAIL CAPTURE (Immersive) ─────────────────────────────────── */}
+      <section className="px-6 py-24 mb-10 bg-primary text-primary-foreground rounded-3xl mx-4 lg:mx-10 shadow-2xl">
+        <div className="max-w-[800px] mx-auto text-center space-y-10">
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+            Level Baru<br />Gaya Hidup.
+          </h2>
+          <p className="text-lg md:text-xl text-primary-foreground/90 font-medium max-w-[500px] mx-auto">
+            Bergabunglah dengan buletin kami untuk akses awal ke rilisan produk eksklusif dan penawaran khusus.
+          </p>
+          <form className="flex flex-col sm:flex-row gap-3 max-w-[500px] mx-auto pt-4" onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="email"
+              placeholder="Alamat Email Anda"
+              className="flex-1 h-14 px-6 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-secondary text-base transition-all"
+            />
+            <Button size="lg" className="h-14 px-8 rounded-full bg-secondary text-secondary-foreground hover:bg-white text-base font-bold transition-transform hover:scale-105 shrink-0 shadow-lg">
+              Berlangganan
+            </Button>
+          </form>
         </div>
       </section>
 

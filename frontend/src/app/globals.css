@@ -46,116 +46,124 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
-/* 22mart.id Theme - Purple & Yellow */
+/* 22mart.id Theme - Ultra Premium Monochrome */
 :root {
-  --radius: 0.625rem;
-  
-  /* Background & Foreground */
-  --background: oklch(0.985 0.002 300);
-  --foreground: oklch(0.2 0.04 280);
-  
-  /* Card */
+  /* Softest of border radii, mostly for pills/buttons */
+  --radius: 1rem;
+
+  /* Pure sharp contrast */
+  --background: oklch(1 0 0);
+  /* Pure White */
+  --foreground: oklch(0.1 0 0);
+  /* Near Black */
+
+  /* Cards blend into the background, borderless feel */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.04 280);
-  
-  /* Popover */
+  --card-foreground: oklch(0.1 0 0);
+
+  /* Popovers have sleek contrast */
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.04 280);
-  
-  /* Primary - Purple #7C3AED */
-  --primary: oklch(0.55 0.24 290);
-  --primary-foreground: oklch(1 0 0);
-  
-  /* Secondary - Yellow #FBBF24 */
-  --secondary: oklch(0.85 0.17 85);
-  --secondary-foreground: oklch(0.25 0.05 85);
-  
-  /* Muted */
-  --muted: oklch(0.96 0.01 300);
-  --muted-foreground: oklch(0.5 0.03 280);
-  
-  /* Accent - Light Purple */
-  --accent: oklch(0.93 0.04 290);
-  --accent-foreground: oklch(0.4 0.15 290);
-  
+  --popover-foreground: oklch(0.1 0 0);
+
+  /* Primary Action - Signature 22Mart Purple */
+  --primary: #7C3AED;
+  --primary-foreground: #ffffff;
+
+  /* Secondary - Signature Yellow */
+  --secondary: #FACC15;
+  --secondary-foreground: #000000;
+
+  /* Muted - For backgrounds of image containers */
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+
+  /* Accent - Subtle hover states */
+  --accent: #FACC15;
+  --accent-foreground: #000000;
+
   /* Destructive */
-  --destructive: oklch(0.55 0.22 25);
-  
-  /* Border */
-  --border: oklch(0.92 0.02 290);
-  --input: oklch(0.92 0.02 290);
-  --ring: oklch(0.55 0.24 290);
-  
+  --destructive: oklch(0.5 0.2 25);
+
+  /* Border - Extremely faint */
+  --border: oklch(0.94 0 0);
+  --input: oklch(0.94 0 0);
+  --ring: oklch(0.1 0 0);
+  /* Black focus rings */
+
   /* Chart */
-  --chart-1: oklch(0.55 0.24 290);
-  --chart-2: oklch(0.85 0.17 85);
-  --chart-3: oklch(0.65 0.18 290);
-  --chart-4: oklch(0.75 0.15 85);
-  --chart-5: oklch(0.45 0.2 290);
-  
+  --chart-1: oklch(0.35 0.15 290);
+  --chart-2: oklch(0.8 0 0);
+  --chart-3: oklch(0.6 0 0);
+  --chart-4: oklch(0.4 0 0);
+  --chart-5: oklch(0.2 0 0);
+
   /* Sidebar */
-  --sidebar: oklch(0.35 0.12 290);
-  --sidebar-foreground: oklch(0.95 0.01 290);
-  --sidebar-primary: oklch(0.85 0.17 85);
-  --sidebar-primary-foreground: oklch(0.25 0.05 85);
-  --sidebar-accent: oklch(0.45 0.15 290);
-  --sidebar-accent-foreground: oklch(0.95 0.01 290);
-  --sidebar-border: oklch(0.45 0.12 290);
-  --sidebar-ring: oklch(0.85 0.17 85);
+  --sidebar: oklch(0.98 0 0);
+  --sidebar-foreground: oklch(0.1 0 0);
+  --sidebar-primary: oklch(0.1 0 0);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.94 0 0);
+  --sidebar-accent-foreground: oklch(0.1 0 0);
+  --sidebar-border: oklch(0.92 0 0);
+  --sidebar-ring: oklch(0.1 0 0);
 }
 
 .dark {
-  /* Background & Foreground */
-  --background: oklch(0.18 0.04 280);
-  --foreground: oklch(0.95 0.01 290);
-  
+  /* Pure sharp contrast inverted */
+  --background: oklch(0.05 0 0);
+  /* Very Dark Gray */
+  --foreground: oklch(0.98 0 0);
+  /* Off White */
+
   /* Card */
-  --card: oklch(0.22 0.05 280);
-  --card-foreground: oklch(0.95 0.01 290);
-  
+  --card: oklch(0.08 0 0);
+  --card-foreground: oklch(0.98 0 0);
+
   /* Popover */
-  --popover: oklch(0.22 0.05 280);
-  --popover-foreground: oklch(0.95 0.01 290);
-  
-  /* Primary - Purple */
-  --primary: oklch(0.65 0.22 290);
-  --primary-foreground: oklch(1 0 0);
-  
-  /* Secondary - Yellow */
-  --secondary: oklch(0.85 0.17 85);
-  --secondary-foreground: oklch(0.25 0.05 85);
-  
+  --popover: oklch(0.08 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+
+  /* Primary */
+  --primary: #8B5CF6;
+  /* White buttons in dark mode */
+  --primary-foreground: #ffffff;
+
+  /* Secondary */
+  --secondary: #FBBF24;
+  --secondary-foreground: #000000;
+
   /* Muted */
-  --muted: oklch(0.28 0.05 280);
-  --muted-foreground: oklch(0.65 0.03 280);
-  
+  --muted: #1f2937;
+  --muted-foreground: #9ca3af;
+
   /* Accent */
-  --accent: oklch(0.35 0.1 290);
-  --accent-foreground: oklch(0.9 0.05 290);
-  
+  --accent: #FBBF24;
+  --accent-foreground: #000000;
+
   /* Destructive */
-  --destructive: oklch(0.65 0.2 25);
-  
+  --destructive: oklch(0.6 0.2 25);
+
   /* Border */
-  --border: oklch(0.3 0.04 280);
-  --input: oklch(0.3 0.04 280);
-  --ring: oklch(0.65 0.22 290);
-  
+  --border: oklch(0.15 0 0);
+  --input: oklch(0.15 0 0);
+  --ring: oklch(0.98 0 0);
+
   /* Sidebar */
-  --sidebar: oklch(0.22 0.05 280);
-  --sidebar-foreground: oklch(0.95 0.01 290);
-  --sidebar-primary: oklch(0.85 0.17 85);
-  --sidebar-primary-foreground: oklch(0.25 0.05 85);
-  --sidebar-accent: oklch(0.35 0.1 290);
-  --sidebar-accent-foreground: oklch(0.95 0.01 290);
-  --sidebar-border: oklch(0.3 0.04 280);
-  --sidebar-ring: oklch(0.65 0.22 290);
+  --sidebar: oklch(0.08 0 0);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.98 0 0);
+  --sidebar-primary-foreground: oklch(0.05 0 0);
+  --sidebar-accent: oklch(0.15 0 0);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.15 0 0);
+  --sidebar-ring: oklch(0.98 0 0);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

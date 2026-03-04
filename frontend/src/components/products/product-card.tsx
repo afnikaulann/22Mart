@@ -2,11 +2,12 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ShoppingCart, Package } from 'lucide-react';
+import { ShoppingBag, Package } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Product } from '@/types';
 import { useCart } from '@/lib/cart-context';
 import { formatPrice } from '@/lib/utils';
+import { toast } from 'sonner';
 
 interface ProductCardProps {
   product: Product;
@@ -17,80 +18,76 @@ export function ProductCard({ product }: ProductCardProps) {
   const isOutOfStock = product.stock <= 0;
   const imageUrl = product.images?.[0] || '/placeholder-product.jpg';
 
+  // High-end e-commerce often uses subtle tags instead of massive discount badges
+  const isNew = typeof product.id === 'string' && product.id.charCodeAt(0) % 2 === 0;
+
   const handleAddToCart = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     if (!isOutOfStock) {
       await addToCart(product.id, 1);
+      toast.success('Di Keranjang', {
+        description: `${product.name} siap di-checkout.`,
+        duration: 2000,
+        position: 'bottom-center'
+      });
     }
   };
 
-  // Simulate a discount for UI purposes (10-30% off, deterministically based on ID length/chars so it doesn't jump)
-  const discountPercent = (product.id.charCodeAt(0) % 3) * 10 + 10; // 10%, 20%, or 30%
-  const originalPrice = product.price * (1 + discountPercent / 100);
-
   return (
-    <Link href={`/products/${product.slug}`}>
-      <div className="group relative flex h-full flex-col overflow-hidden rounded-xl border bg-white transition-all hover:border-primary hover:shadow-md">
-        {/* Image */}
-        <div className="relative aspect-square overflow-hidden bg-muted">
-          <Image
-            src={imageUrl}
-            alt={product.name}
-            fill
-            className="object-cover transition-transform group-hover:scale-105"
-            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
-          />
-          {/* Discount Badge */}
-          {!isOutOfStock && (
-            <div className="absolute left-0 top-0 rounded-br-lg bg-red-600 px-2 py-1 text-[10px] font-bold text-white shadow-sm">
-              Diskon {discountPercent}%
-            </div>
-          )}
-          {isOutOfStock && (
-            <div className="absolute inset-0 flex items-center justify-center bg-white/70 backdrop-blur-[1px]">
-              <span className="rounded-md bg-destructive/90 px-3 py-1 text-xs font-semibold text-white shadow-sm">
-                Stok Habis
-              </span>
-            </div>
-          )}
-        </div>
+    <Link
+      href={`/products/${product.slug}`}
+      className="group flex flex-col gap-5 block outline-none"
+    >
+      {/* ── IMAGE WRAPPER (No borders, just a beautiful muted expanse) ── */}
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] bg-muted/40 transition-all duration-700 ease-in-out group-hover:bg-muted/60">
 
-        {/* Content (Dense Padding) */}
-        <div className="flex flex-1 flex-col p-3">
-          {/* Category */}
-          <p className="mb-1 text-[10px] sm:text-xs text-muted-foreground truncate">
-            {product.category?.name || 'Kategori'}
-          </p>
+        {/* Subtle Labels */}
+        {isNew && !isOutOfStock && (
+          <div className="absolute top-4 left-4 z-20">
+            <span className="bg-foreground text-background text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full">Baru</span>
+          </div>
+        )}
 
-          {/* Name - strictly 2 lines */}
-          <h3 className="mb-1 text-xs sm:text-sm font-medium leading-tight line-clamp-2 min-h-[32px] sm:min-h-[40px]">
-            {product.name}
-          </h3>
+        {isOutOfStock && (
+          <div className="absolute top-4 left-4 z-20">
+            <span className="bg-destructive text-destructive-foreground text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full">Habis</span>
+          </div>
+        )}
 
-          <div className="mt-auto pt-2">
-            {/* Strikethrough Price */}
-            <p className="text-[10px] sm:text-xs text-muted-foreground line-through decoration-red-400">
-              {formatPrice(originalPrice)}
-            </p>
-            {/* Final Price (Red) */}
-            <p className="mb-2 text-sm sm:text-base font-bold text-red-600">
-              {formatPrice(product.price)}
-            </p>
+        {/* The Image */}
+        <Image
+          src={imageUrl}
+          alt={product.name}
+          fill
+          className={`object-cover object-center p-4 transition-transform duration-1000 ease-out group-hover:scale-[1.03] group-hover:p-0 ${isOutOfStock ? 'opacity-50 grayscale' : ''}`}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
 
-            {/* Add to cart button */}
+        {/* ── FADE-IN HOVER ACTION ── */}
+        {!isOutOfStock && (
+          <div className="absolute inset-0 bg-background/5 backdrop-blur-[2px] opacity-0 transition-opacity duration-500 flex items-end justify-center pb-6 group-hover:opacity-100">
             <Button
               onClick={handleAddToCart}
-              disabled={isOutOfStock}
-              className={`w-full gap-1.5 h-8 sm:h-9 text-xs sm:text-sm font-semibold transition-colors ${isOutOfStock ? 'bg-muted text-muted-foreground' : 'bg-primary text-primary-foreground hover:bg-primary/90'
-                }`}
-              size="sm"
+              className="w-[85%] rounded-full h-12 bg-white/95 text-black hover:bg-white hover:scale-105 shadow-xl transition-all duration-300 font-semibold"
             >
-              <ShoppingCart className="h-3.5 w-3.5" />
-              {isOutOfStock ? 'Habis' : '+ Keranjang'}
+              <ShoppingBag className="mr-2 h-4 w-4" /> Masukkan Keranjang
             </Button>
           </div>
-        </div>
+        )}
+      </div>
+
+      {/* ── TYPOGRAPHY (Clean, tracking-tight, minimalist) ── */}
+      <div className="flex flex-col gap-1 px-1">
+        <p className="text-[10px] sm:text-xs text-muted-foreground tracking-widest uppercase">
+          {product.category?.name || 'Kategori'}
+        </p>
+        <h3 className="text-sm font-semibold text-foreground/80 truncate tracking-tight group-hover:text-primary transition-colors">
+          {product.name}
+        </h3>
+        <p className="text-base font-bold text-foreground tracking-tight">
+          {formatPrice(product.price)}
+        </p>
       </div>
     </Link>
   );

@@ -1,0 +1,1358 @@
+[
+  {
+    "name": "ABC 9VOLT SPW",
+    "slug": "abc-9volt-spw",
+    "description": "ABC 9VOLT SPW dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 50000,
+    "stock": 86,
+    "images": [
+      "/images/products/aksesoris-elektronik/abc-9volt-spw.jpg"
+    ],
+    "categorySlug": "aksesoris-elektronik",
+    "isActive": true
+  },
+  {
+    "name": "ABC ALKALINE 9VOLT",
+    "slug": "abc-alkaline-9volt",
+    "description": "ABC ALKALINE 9VOLT dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 17000,
+    "stock": 85,
+    "images": [
+      "/images/products/aksesoris-elektronik/abc-alkaline-9volt.jpg"
+    ],
+    "categorySlug": "aksesoris-elektronik",
+    "isActive": true
+  },
+  {
+    "name": "ABC ALKALINE AAA 2",
+    "slug": "abc-alkaline-aaa-2",
+    "description": "ABC ALKALINE AAA 2 dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 51000,
+    "stock": 95,
+    "images": [
+      "/images/products/aksesoris-elektronik/abc-alkaline-aaa-2.jpg"
+    ],
+    "categorySlug": "aksesoris-elektronik",
+    "isActive": true
+  },
+  {
+    "name": "ABC ALKALINE AAA 4+2",
+    "slug": "abc-alkaline-aaa-42",
+    "description": "ABC ALKALINE AAA 4+2 dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 75000,
+    "stock": 81,
+    "images": [
+      "/images/products/aksesoris-elektronik/abc-alkaline-aaa-42.jpg"
+    ],
+    "categorySlug": "aksesoris-elektronik",
+    "isActive": true
+  },
+  {
+    "name": "ABC ALKALINE AALR6 ISI 2",
+    "slug": "abc-alkaline-aalr6-isi-2",
+    "description": "ABC ALKALINE AALR6 ISI 2 dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 24000,
+    "stock": 97,
+    "images": [
+      "/images/products/aksesoris-elektronik/abc-alkaline-aalr6-isi-2.jpg"
+    ],
+    "categorySlug": "aksesoris-elektronik",
+    "isActive": true
+  },
+  {
+    "name": "ABC ALKALINE LR6",
+    "slug": "abc-alkaline-lr6",
+    "description": "ABC ALKALINE LR6 dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 35000,
+    "stock": 77,
+    "images": [
+      "/images/products/aksesoris-elektronik/abc-alkaline-lr6.jpg"
+    ],
+    "categorySlug": "aksesoris-elektronik",
+    "isActive": true
+  },
+  {
+    "name": "ABC BATERAI BIRU CZ R6",
+    "slug": "abc-baterai-biru-cz-r6",
+    "description": "ABC BATERAI BIRU CZ R6 dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 64000,
+    "stock": 46,
+    "images": [
+      "/images/products/aksesoris-elektronik/abc-baterai-biru-cz-r6.jpg"
+    ],
+    "categorySlug": "aksesoris-elektronik",
+    "isActive": true
+  },
+  {
+    "name": "ABC BATERAI BIRU R14",
+    "slug": "abc-baterai-biru-r14",
+    "description": "ABC BATERAI BIRU R14 dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 51000,
+    "stock": 87,
+    "images": [
+      "/images/products/aksesoris-elektronik/abc-baterai-biru-r14.png"
+    ],
+    "categorySlug": "aksesoris-elektronik",
+    "isActive": true
+  },
+  {
+    "name": "ABC BATERAI C2 BIRU R20",
+    "slug": "abc-baterai-c2-biru-r20",
+    "description": "ABC BATERAI C2 BIRU R20 dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 10000,
+    "stock": 34,
+    "images": [
+      "/images/products/aksesoris-elektronik/abc-baterai-c2-biru-r20.jpeg"
+    ],
+    "categorySlug": "aksesoris-elektronik",
+    "isActive": true
+  },
+  {
+    "name": "ABC BATERAI JAM",
+    "slug": "abc-baterai-jam",
+    "description": "ABC BATERAI JAM dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 39000,
+    "stock": 89,
+    "images": [
+      "/images/products/aksesoris-elektronik/abc-baterai-jam.jpg"
+    ],
+    "categorySlug": "aksesoris-elektronik",
+    "isActive": true
+  },
+  {
+    "name": "ABC BATERAI POWER 9V KOTAK HTM",
+    "slug": "abc-baterai-power-9v-kotak-htm",
+    "description": "ABC BATERAI POWER 9V KOTAK HTM dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 54000,
+    "stock": 37,
+    "images": [
+      "/images/products/aksesoris-elektronik/abc-baterai-power-9v-kotak-htm.png"
+    ],
+    "categorySlug": "aksesoris-elektronik",
+    "isActive": true
+  },
+  {
+    "name": "ABC BATERAI POWER A3 ISI 2",
+    "slug": "abc-baterai-power-a3-isi-2",
+    "description": "ABC BATERAI POWER A3 ISI 2 dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 99000,
+    "stock": 77,
+    "images": [
+      "/images/products/aksesoris-elektronik/abc-baterai-power-a3-isi-2.png"
+    ],
+    "categorySlug": "aksesoris-elektronik",
+    "isActive": true
+  },
+  {
+    "name": "ABC BATERAI REMOT",
+    "slug": "abc-baterai-remot",
+    "description": "ABC BATERAI REMOT dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 44000,
+    "stock": 64,
+    "images": [
+      "/images/products/aksesoris-elektronik/abc-baterai-remot.png"
+    ],
+    "categorySlug": "aksesoris-elektronik",
+    "isActive": true
+  },
+  {
+    "name": "Bakso mercon aroma jaya",
+    "slug": "bakso-mercon-aroma-jaya",
+    "description": "Bakso mercon aroma jaya dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 64000,
+    "stock": 16,
+    "images": [
+      "/images/products/fresh-food/bakso-mercon-aroma-jaya.jpeg"
+    ],
+    "categorySlug": "fresh-food",
+    "isActive": true
+  },
+  {
+    "name": "BELFOODS CHICKEN NGT CORN 450 GR",
+    "slug": "belfoods-chicken-ngt-corn-450-gr",
+    "description": "BELFOODS CHICKEN NGT CORN 450 GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 38000,
+    "stock": 59,
+    "images": [
+      "/images/products/fresh-food/belfoods-chicken-ngt-corn-450-gr.jpg"
+    ],
+    "categorySlug": "fresh-food",
+    "isActive": true
+  },
+  {
+    "name": "Belfoods Chicken Nugget Corn",
+    "slug": "belfoods-chicken-nugget-corn",
+    "description": "Belfoods Chicken Nugget Corn dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 44000,
+    "stock": 30,
+    "images": [
+      "/images/products/fresh-food/belfoods-chicken-nugget-corn.jpeg"
+    ],
+    "categorySlug": "fresh-food",
+    "isActive": true
+  },
+  {
+    "name": "Belfoods Chicken Nugget Crunchy",
+    "slug": "belfoods-chicken-nugget-crunchy",
+    "description": "Belfoods Chicken Nugget Crunchy dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 86000,
+    "stock": 85,
+    "images": [
+      "/images/products/fresh-food/belfoods-chicken-nugget-crunchy.jpg"
+    ],
+    "categorySlug": "fresh-food",
+    "isActive": true
+  },
+  {
+    "name": "AICE BINGO CHOCOLATE 40GR",
+    "slug": "aice-bingo-chocolate-40gr",
+    "description": "AICE BINGO CHOCOLATE 40GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 59000,
+    "stock": 28,
+    "images": [
+      "/images/products/ice-cream/aice-bingo-chocolate-40gr.png"
+    ],
+    "categorySlug": "ice-cream",
+    "isActive": true
+  },
+  {
+    "name": "AICE CHOCO MALT 49ML",
+    "slug": "aice-choco-malt-49ml",
+    "description": "AICE CHOCO MALT 49ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 27000,
+    "stock": 94,
+    "images": [
+      "/images/products/ice-cream/aice-choco-malt-49ml.jpg"
+    ],
+    "categorySlug": "ice-cream",
+    "isActive": true
+  },
+  {
+    "name": "AICE CHOCOLATE COLOR STIK 50GR",
+    "slug": "aice-chocolate-color-stik-50gr",
+    "description": "AICE CHOCOLATE COLOR STIK 50GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 15000,
+    "stock": 30,
+    "images": [
+      "/images/products/ice-cream/aice-chocolate-color-stik-50gr.webp"
+    ],
+    "categorySlug": "ice-cream",
+    "isActive": true
+  },
+  {
+    "name": "AICE CHOCOLATE CRISPY 60GR",
+    "slug": "aice-chocolate-crispy-60gr",
+    "description": "AICE CHOCOLATE CRISPY 60GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 21000,
+    "stock": 85,
+    "images": [
+      "/images/products/ice-cream/aice-chocolate-crispy-60gr.jpeg"
+    ],
+    "categorySlug": "ice-cream",
+    "isActive": true
+  },
+  {
+    "name": "AICE CHOCOLATE MAX",
+    "slug": "aice-chocolate-max",
+    "description": "AICE CHOCOLATE MAX dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 76000,
+    "stock": 74,
+    "images": [
+      "/images/products/ice-cream/aice-chocolate-max.jpg"
+    ],
+    "categorySlug": "ice-cream",
+    "isActive": true
+  },
+  {
+    "name": "AICE DURIAN CUP",
+    "slug": "aice-durian-cup",
+    "description": "AICE DURIAN CUP dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 39000,
+    "stock": 71,
+    "images": [
+      "/images/products/ice-cream/aice-durian-cup.jpeg"
+    ],
+    "categorySlug": "ice-cream",
+    "isActive": true
+  },
+  {
+    "name": "AICE MOCHI CHOCOLATE 45ML",
+    "slug": "aice-mochi-chocolate-45ml",
+    "description": "AICE MOCHI CHOCOLATE 45ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 50000,
+    "stock": 53,
+    "images": [
+      "/images/products/ice-cream/aice-mochi-chocolate-45ml.jpg"
+    ],
+    "categorySlug": "ice-cream",
+    "isActive": true
+  },
+  {
+    "name": "AICE STRAWBERRY CRISPY",
+    "slug": "aice-strawberry-crispy",
+    "description": "AICE STRAWBERRY CRISPY dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 98000,
+    "stock": 59,
+    "images": [
+      "/images/products/ice-cream/aice-strawberry-crispy.jpg"
+    ],
+    "categorySlug": "ice-cream",
+    "isActive": true
+  },
+  {
+    "name": "AICE STRWBERRY CUP",
+    "slug": "aice-strwberry-cup",
+    "description": "AICE STRWBERRY CUP dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 23000,
+    "stock": 98,
+    "images": [
+      "/images/products/ice-cream/aice-strwberry-cup.png"
+    ],
+    "categorySlug": "ice-cream",
+    "isActive": true
+  },
+  {
+    "name": "BERAS ANAK RAJA 3 KG",
+    "slug": "beras-anak-raja-3-kg",
+    "description": "BERAS ANAK RAJA 3 KG dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 46000,
+    "stock": 19,
+    "images": [
+      "/images/products/kebutuhan-dapur/beras-anak-raja-3-kg.jpg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "BERAS ANAK RAJA 5KG",
+    "slug": "beras-anak-raja-5kg",
+    "description": "BERAS ANAK RAJA 5KG dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 74000,
+    "stock": 38,
+    "images": [
+      "/images/products/kebutuhan-dapur/beras-anak-raja-5kg.jpg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "BERAS LAHAP 5 KG",
+    "slug": "beras-lahap-5-kg",
+    "description": "BERAS LAHAP 5 KG dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 82000,
+    "stock": 75,
+    "images": [
+      "/images/products/kebutuhan-dapur/beras-lahap-5-kg.jpeg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "BERAS LARIST PREMIUM 5 KG",
+    "slug": "beras-larist-premium-5-kg",
+    "description": "BERAS LARIST PREMIUM 5 KG dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 20000,
+    "stock": 71,
+    "images": [
+      "/images/products/kebutuhan-dapur/beras-larist-premium-5-kg.jpg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "BERAS LOSARI CRISTAL 5 KG",
+    "slug": "beras-losari-cristal-5-kg",
+    "description": "BERAS LOSARI CRISTAL 5 KG dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 29000,
+    "stock": 54,
+    "images": [
+      "/images/products/kebutuhan-dapur/beras-losari-cristal-5-kg.jpg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "BERAS RAJA PLATINUM 5 KG",
+    "slug": "beras-raja-platinum-5-kg",
+    "description": "BERAS RAJA PLATINUM 5 KG dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 12000,
+    "stock": 71,
+    "images": [
+      "/images/products/kebutuhan-dapur/beras-raja-platinum-5-kg.jpg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "BERAS RAJA ULTIMA 5 KG",
+    "slug": "beras-raja-ultima-5-kg",
+    "description": "BERAS RAJA ULTIMA 5 KG dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 36000,
+    "stock": 76,
+    "images": [
+      "/images/products/kebutuhan-dapur/beras-raja-ultima-5-kg.jpg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "BERAS SUPERBOY",
+    "slug": "beras-superboy",
+    "description": "BERAS SUPERBOY dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 41000,
+    "stock": 69,
+    "images": [
+      "/images/products/kebutuhan-dapur/beras-superboy.jpg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "BERAS WANEMO 5 KG",
+    "slug": "beras-wanemo-5-kg",
+    "description": "BERAS WANEMO 5 KG dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 95000,
+    "stock": 60,
+    "images": [
+      "/images/products/kebutuhan-dapur/beras-wanemo-5-kg.jpeg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC SARDINES BUMBU SERUNDENG 155GR",
+    "slug": "abc-sardines-bumbu-serundeng-155gr",
+    "description": "ABC SARDINES BUMBU SERUNDENG 155GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 48000,
+    "stock": 53,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-sardines-bumbu-serundeng-155gr.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC SARDINES BUMBU SERUNDENG 400GR",
+    "slug": "abc-sardines-bumbu-serundeng-400gr",
+    "description": "ABC SARDINES BUMBU SERUNDENG 400GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 78000,
+    "stock": 82,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-sardines-bumbu-serundeng-400gr.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC SARDINES S CABAI 155GR",
+    "slug": "abc-sardines-s-cabai-155gr",
+    "description": "ABC SARDINES S CABAI 155GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 77000,
+    "stock": 71,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-sardines-s-cabai-155gr.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC KCP MNS 275ML",
+    "slug": "abc-kcp-mns-275ml",
+    "description": "ABC KCP MNS 275ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 51000,
+    "stock": 33,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-kcp-mns-275ml.jpg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC KECAP ASIN 133ML",
+    "slug": "abc-kecap-asin-133ml",
+    "description": "ABC KECAP ASIN 133ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 25000,
+    "stock": 10,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-kecap-asin-133ml.jpg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC KECAP EXTRA PDS 60GR",
+    "slug": "abc-kecap-extra-pds-60gr",
+    "description": "ABC KECAP EXTRA PDS 60GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 10000,
+    "stock": 37,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-kecap-extra-pds-60gr.jpg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC KECAP INGGRIS 195ML",
+    "slug": "abc-kecap-inggris-195ml",
+    "description": "ABC KECAP INGGRIS 195ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 16000,
+    "stock": 20,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-kecap-inggris-195ml.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC Kecap Manis 135 ml",
+    "slug": "abc-kecap-manis-135-ml",
+    "description": "ABC Kecap Manis 135 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 52000,
+    "stock": 75,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-kecap-manis-135-ml.jpeg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC KECAP MANIS 250GR",
+    "slug": "abc-kecap-manis-250gr",
+    "description": "ABC KECAP MANIS 250GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 97000,
+    "stock": 80,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-kecap-manis-250gr.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC Kecap Manis 685 gr",
+    "slug": "abc-kecap-manis-685-gr",
+    "description": "ABC Kecap Manis 685 gr dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 85000,
+    "stock": 20,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-kecap-manis-685-gr.jpeg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC KECAP MANIS 825GR",
+    "slug": "abc-kecap-manis-825gr",
+    "description": "ABC KECAP MANIS 825GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 12000,
+    "stock": 55,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-kecap-manis-825gr.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC KECAP MANIS EXTRA PEDAS 135ML",
+    "slug": "abc-kecap-manis-extra-pedas-135ml",
+    "description": "ABC KECAP MANIS EXTRA PEDAS 135ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 5000,
+    "stock": 54,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-kecap-manis-extra-pedas-135ml.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC Kecap Manis Reff 65 gr",
+    "slug": "abc-kecap-manis-reff-65-gr",
+    "description": "ABC Kecap Manis Reff 65 gr dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 52000,
+    "stock": 49,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-kecap-manis-reff-65-gr.jpg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC KECAP MANIS REFF 65GR",
+    "slug": "abc-kecap-manis-reff-65gr",
+    "description": "ABC KECAP MANIS REFF 65GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 93000,
+    "stock": 54,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-kecap-manis-reff-65gr.jpeg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC KECAP MANIS SCT 18GR",
+    "slug": "abc-kecap-manis-sct-18gr",
+    "description": "ABC KECAP MANIS SCT 18GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 69000,
+    "stock": 40,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-kecap-manis-sct-18gr.jpg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC SAM ASLI SCT 8GR",
+    "slug": "abc-sam-asli-sct-8gr",
+    "description": "ABC SAM ASLI SCT 8GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 17000,
+    "stock": 41,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-sam-asli-sct-8gr.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC SAM TERASI SCT 18GR",
+    "slug": "abc-sam-terasi-sct-18gr",
+    "description": "ABC SAM TERASI SCT 18GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 69000,
+    "stock": 79,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-sam-terasi-sct-18gr.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC Sambal Asli 130 ml",
+    "slug": "abc-sambal-asli-130-ml",
+    "description": "ABC Sambal Asli 130 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 76000,
+    "stock": 13,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-sambal-asli-130-ml.jpeg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC SAMBAL ASLI 130ML",
+    "slug": "abc-sambal-asli-130ml",
+    "description": "ABC SAMBAL ASLI 130ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 19000,
+    "stock": 88,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-sambal-asli-130ml.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC SAMBAL ASLI 8G 22PCS",
+    "slug": "abc-sambal-asli-8g-22pcs",
+    "description": "ABC SAMBAL ASLI 8G 22PCS dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 72000,
+    "stock": 61,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-sambal-asli-8g-22pcs.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC SAMBAL ASLI PCH 380GR",
+    "slug": "abc-sambal-asli-pch-380gr",
+    "description": "ABC SAMBAL ASLI PCH 380GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 65000,
+    "stock": 53,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-sambal-asli-pch-380gr.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC SAMBAL EXTRA PDS 130ML",
+    "slug": "abc-sambal-extra-pds-130ml",
+    "description": "ABC SAMBAL EXTRA PDS 130ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 69000,
+    "stock": 99,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-sambal-extra-pds-130ml.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC SAMBAL EXTRA PDS 335ML",
+    "slug": "abc-sambal-extra-pds-335ml",
+    "description": "ABC SAMBAL EXTRA PDS 335ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 60000,
+    "stock": 28,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-sambal-extra-pds-335ml.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC Sambal Extra Pedas 270 ml",
+    "slug": "abc-sambal-extra-pedas-270-ml",
+    "description": "ABC Sambal Extra Pedas 270 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 67000,
+    "stock": 50,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-sambal-extra-pedas-270-ml.jpeg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC Saus Tomat 135 ml",
+    "slug": "abc-saus-tomat-135-ml",
+    "description": "ABC Saus Tomat 135 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 90000,
+    "stock": 81,
+    "images": [
+      "/images/products/kebutuhan-dapur/abc-saus-tomat-135-ml.jpeg"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "Bango Kecap Manis 400 ml",
+    "slug": "bango-kecap-manis-400-ml",
+    "description": "Bango Kecap Manis 400 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 19000,
+    "stock": 42,
+    "images": [
+      "/images/products/kebutuhan-dapur/bango-kecap-manis-400-ml.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "Bango Kecap Manis 60 ml",
+    "slug": "bango-kecap-manis-60-ml",
+    "description": "Bango Kecap Manis 60 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 51000,
+    "stock": 41,
+    "images": [
+      "/images/products/kebutuhan-dapur/bango-kecap-manis-60-ml.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "INDOFOOD KECAP MANIS 135ML",
+    "slug": "indofood-kecap-manis-135ml",
+    "description": "INDOFOOD KECAP MANIS 135ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 89000,
+    "stock": 57,
+    "images": [
+      "/images/products/kebutuhan-dapur/indofood-kecap-manis-135ml.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "INDOFOOD SAMBAL EXTRA PEDAS DAHSYAT 275ML",
+    "slug": "indofood-sambal-extra-pedas-dahsyat-275ml",
+    "description": "INDOFOOD SAMBAL EXTRA PEDAS DAHSYAT 275ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 54000,
+    "stock": 59,
+    "images": [
+      "/images/products/kebutuhan-dapur/indofood-sambal-extra-pedas-dahsyat-275ml.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "Screenshot 2026-02-02 174510",
+    "slug": "screenshot-2026-02-02-174510",
+    "description": "Screenshot 2026-02-02 174510 dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 63000,
+    "stock": 36,
+    "images": [
+      "/images/products/kebutuhan-dapur/screenshot-2026-02-02-174510.png"
+    ],
+    "categorySlug": "kebutuhan-dapur",
+    "isActive": true
+  },
+  {
+    "name": "ABC Mie Cup Ayam Bawang",
+    "slug": "abc-mie-cup-ayam-bawang",
+    "description": "ABC Mie Cup Ayam Bawang dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 16000,
+    "stock": 16,
+    "images": [
+      "/images/products/mie-makanan-instan/abc-mie-cup-ayam-bawang.jpg"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "ABC Mie Cup Baso Sapi",
+    "slug": "abc-mie-cup-baso-sapi",
+    "description": "ABC Mie Cup Baso Sapi dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 6000,
+    "stock": 49,
+    "images": [
+      "/images/products/mie-makanan-instan/abc-mie-cup-baso-sapi.jpeg"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "ABC MIE CUP BASO SAPI",
+    "slug": "abc-mie-cup-baso-sapi",
+    "description": "ABC MIE CUP BASO SAPI dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 22000,
+    "stock": 83,
+    "images": [
+      "/images/products/mie-makanan-instan/abc-mie-cup-baso-sapi.jpg"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "ABC MIE CUP KARI AYAM 60GR",
+    "slug": "abc-mie-cup-kari-ayam-60gr",
+    "description": "ABC MIE CUP KARI AYAM 60GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 31000,
+    "stock": 55,
+    "images": [
+      "/images/products/mie-makanan-instan/abc-mie-cup-kari-ayam-60gr.jpg"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "ABC Mie Cup Kari Ayam",
+    "slug": "abc-mie-cup-kari-ayam",
+    "description": "ABC Mie Cup Kari Ayam dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 68000,
+    "stock": 99,
+    "images": [
+      "/images/products/mie-makanan-instan/abc-mie-cup-kari-ayam.png"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "ABC Mie Selera Ayam Gulai Pedas",
+    "slug": "abc-mie-selera-ayam-gulai-pedas",
+    "description": "ABC Mie Selera Ayam Gulai Pedas dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 71000,
+    "stock": 83,
+    "images": [
+      "/images/products/mie-makanan-instan/abc-mie-selera-ayam-gulai-pedas.jpg"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "ABC MIE SELERA AYAM GULAI PEDAS",
+    "slug": "abc-mie-selera-ayam-gulai-pedas",
+    "description": "ABC MIE SELERA AYAM GULAI PEDAS dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 27000,
+    "stock": 37,
+    "images": [
+      "/images/products/mie-makanan-instan/abc-mie-selera-ayam-gulai-pedas.png"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "ABC Mie Selera Pedas Nampol",
+    "slug": "abc-mie-selera-pedas-nampol",
+    "description": "ABC Mie Selera Pedas Nampol dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 18000,
+    "stock": 93,
+    "images": [
+      "/images/products/mie-makanan-instan/abc-mie-selera-pedas-nampol.jpeg"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "ABC MIE SELERA PEDAS NAMPOL",
+    "slug": "abc-mie-selera-pedas-nampol",
+    "description": "ABC MIE SELERA PEDAS NAMPOL dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 78000,
+    "stock": 12,
+    "images": [
+      "/images/products/mie-makanan-instan/abc-mie-selera-pedas-nampol.png"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "ABC MIE SELERA PEDAS SUP TOMAT 70GR",
+    "slug": "abc-mie-selera-pedas-sup-tomat-70gr",
+    "description": "ABC MIE SELERA PEDAS SUP TOMAT 70GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 64000,
+    "stock": 88,
+    "images": [
+      "/images/products/mie-makanan-instan/abc-mie-selera-pedas-sup-tomat-70gr.png"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "ABC Mie Selera Sup Tomat",
+    "slug": "abc-mie-selera-sup-tomat",
+    "description": "ABC Mie Selera Sup Tomat dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 8000,
+    "stock": 53,
+    "images": [
+      "/images/products/mie-makanan-instan/abc-mie-selera-sup-tomat.png"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "Bihun Jagung Misuka",
+    "slug": "bihun-jagung-misuka",
+    "description": "Bihun Jagung Misuka dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 18000,
+    "stock": 24,
+    "images": [
+      "/images/products/mie-makanan-instan/bihun-jagung-misuka.jpg"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "Bihun Rose Brand 300 gr",
+    "slug": "bihun-rose-brand-300-gr",
+    "description": "Bihun Rose Brand 300 gr dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 49000,
+    "stock": 69,
+    "images": [
+      "/images/products/mie-makanan-instan/bihun-rose-brand-300-gr.jpg"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "Bihunku Soto Spesial",
+    "slug": "bihunku-soto-spesial",
+    "description": "Bihunku Soto Spesial dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 83000,
+    "stock": 58,
+    "images": [
+      "/images/products/mie-makanan-instan/bihunku-soto-spesial.jpg"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "LEMONILO MIE GORENG 80G",
+    "slug": "lemonilo-mie-goreng-80g",
+    "description": "LEMONILO MIE GORENG 80G dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 8000,
+    "stock": 36,
+    "images": [
+      "/images/products/mie-makanan-instan/lemonilo-mie-goreng-80g.png"
+    ],
+    "categorySlug": "mie-makanan-instan",
+    "isActive": true
+  },
+  {
+    "name": "ABC APPLE JC TBA 250ML",
+    "slug": "abc-apple-jc-tba-250ml",
+    "description": "ABC APPLE JC TBA 250ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 17000,
+    "stock": 41,
+    "images": [
+      "/images/products/minuman/abc-apple-jc-tba-250ml.jpg"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC ASAM JAWA 250ML",
+    "slug": "abc-asam-jawa-250ml",
+    "description": "ABC ASAM JAWA 250ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 24000,
+    "stock": 47,
+    "images": [
+      "/images/products/minuman/abc-asam-jawa-250ml.jpg"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC CHOCOMALT COFFE BTL 200ML",
+    "slug": "abc-chocomalt-coffe-btl-200ml",
+    "description": "ABC CHOCOMALT COFFE BTL 200ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 90000,
+    "stock": 83,
+    "images": [
+      "/images/products/minuman/abc-chocomalt-coffe-btl-200ml.jpg"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC Juice Jambu 250 ml",
+    "slug": "abc-juice-jambu-250-ml",
+    "description": "ABC Juice Jambu 250 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 28000,
+    "stock": 22,
+    "images": [
+      "/images/products/minuman/abc-juice-jambu-250-ml.jpeg"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC Juice Mangga 250 ml",
+    "slug": "abc-juice-mangga-250-ml",
+    "description": "ABC Juice Mangga 250 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 97000,
+    "stock": 93,
+    "images": [
+      "/images/products/minuman/abc-juice-mangga-250-ml.jpeg"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC Juice Orange 250 ml",
+    "slug": "abc-juice-orange-250-ml",
+    "description": "ABC Juice Orange 250 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 19000,
+    "stock": 95,
+    "images": [
+      "/images/products/minuman/abc-juice-orange-250-ml.png"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC JUICE SIRSAK 250ML",
+    "slug": "abc-juice-sirsak-250ml",
+    "description": "ABC JUICE SIRSAK 250ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 64000,
+    "stock": 51,
+    "images": [
+      "/images/products/minuman/abc-juice-sirsak-250ml.jpg"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC KLEPON 25GR",
+    "slug": "abc-klepon-25gr",
+    "description": "ABC KLEPON 25GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 91000,
+    "stock": 49,
+    "images": [
+      "/images/products/minuman/abc-klepon-25gr.png"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC KOPI MOCCA 27GR - SEDUH",
+    "slug": "abc-kopi-mocca-27gr-seduh",
+    "description": "ABC KOPI MOCCA 27GR - SEDUH dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 34000,
+    "stock": 98,
+    "images": [
+      "/images/products/minuman/abc-kopi-mocca-27gr-seduh.png"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC KOPI MOCCA 27GR",
+    "slug": "abc-kopi-mocca-27gr",
+    "description": "ABC KOPI MOCCA 27GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 51000,
+    "stock": 74,
+    "images": [
+      "/images/products/minuman/abc-kopi-mocca-27gr.png"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC KOPI SUSU 30GR - SEDUH",
+    "slug": "abc-kopi-susu-30gr-seduh",
+    "description": "ABC KOPI SUSU 30GR - SEDUH dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 86000,
+    "stock": 77,
+    "images": [
+      "/images/products/minuman/abc-kopi-susu-30gr-seduh.png"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC KOPI SUSU 30GR",
+    "slug": "abc-kopi-susu-30gr",
+    "description": "ABC KOPI SUSU 30GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 38000,
+    "stock": 10,
+    "images": [
+      "/images/products/minuman/abc-kopi-susu-30gr.png"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC KOPI SUSU BTL 200ML",
+    "slug": "abc-kopi-susu-btl-200ml",
+    "description": "ABC KOPI SUSU BTL 200ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 11000,
+    "stock": 38,
+    "images": [
+      "/images/products/minuman/abc-kopi-susu-btl-200ml.png"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC KOPI SUSU GULA AREN 27GR",
+    "slug": "abc-kopi-susu-gula-aren-27gr",
+    "description": "ABC KOPI SUSU GULA AREN 27GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 17000,
+    "stock": 89,
+    "images": [
+      "/images/products/minuman/abc-kopi-susu-gula-aren-27gr.jpg"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC KOPI SUSU KURMA 27GR",
+    "slug": "abc-kopi-susu-kurma-27gr",
+    "description": "ABC KOPI SUSU KURMA 27GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 17000,
+    "stock": 17,
+    "images": [
+      "/images/products/minuman/abc-kopi-susu-kurma-27gr.png"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC Lychee Juice 250 ml",
+    "slug": "abc-lychee-juice-250-ml",
+    "description": "ABC Lychee Juice 250 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 13000,
+    "stock": 34,
+    "images": [
+      "/images/products/minuman/abc-lychee-juice-250-ml.jpg"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "ABC PLUS GULA SC 18GR",
+    "slug": "abc-plus-gula-sc-18gr",
+    "description": "ABC PLUS GULA SC 18GR dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 74000,
+    "stock": 59,
+    "images": [
+      "/images/products/minuman/abc-plus-gula-sc-18gr.png"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "Adem Sari Ching Ku Lemon 320 ml",
+    "slug": "adem-sari-ching-ku-lemon-320-ml",
+    "description": "Adem Sari Ching Ku Lemon 320 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 57000,
+    "stock": 44,
+    "images": [
+      "/images/products/minuman/adem-sari-ching-ku-lemon-320-ml.png"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "Ades 600 ml",
+    "slug": "ades-600-ml",
+    "description": "Ades 600 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 86000,
+    "stock": 29,
+    "images": [
+      "/images/products/minuman/ades-600-ml.png"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "Aqua 1500 ml",
+    "slug": "aqua-1500-ml",
+    "description": "Aqua 1500 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 64000,
+    "stock": 19,
+    "images": [
+      "/images/products/minuman/aqua-1500-ml.jpg"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "Aqua 600 ml",
+    "slug": "aqua-600-ml",
+    "description": "Aqua 600 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 16000,
+    "stock": 94,
+    "images": [
+      "/images/products/minuman/aqua-600-ml.jpeg"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "Buavita Guava 250 ml",
+    "slug": "buavita-guava-250-ml",
+    "description": "Buavita Guava 250 ml dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 96000,
+    "stock": 64,
+    "images": [
+      "/images/products/minuman/buavita-guava-250-ml.jpg"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "LASEGAR TWIST LYCHEE LEMON 320ML",
+    "slug": "lasegar-twist-lychee-lemon-320ml",
+    "description": "LASEGAR TWIST LYCHEE LEMON 320ML dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 63000,
+    "stock": 91,
+    "images": [
+      "/images/products/minuman/lasegar-twist-lychee-lemon-320ml.jpg"
+    ],
+    "categorySlug": "minuman",
+    "isActive": true
+  },
+  {
+    "name": "Alpenliebe Roll 32 gr",
+    "slug": "alpenliebe-roll-32-gr",
+    "description": "Alpenliebe Roll 32 gr dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 22000,
+    "stock": 98,
+    "images": [
+      "/images/products/snack/alpenliebe-roll-32-gr.jpeg"
+    ],
+    "categorySlug": "snack",
+    "isActive": true
+  },
+  {
+    "name": "Apetito BBQ 41 gr",
+    "slug": "apetito-bbq-41-gr",
+    "description": "Apetito BBQ 41 gr dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 78000,
+    "stock": 19,
+    "images": [
+      "/images/products/snack/apetito-bbq-41-gr.jpg"
+    ],
+    "categorySlug": "snack",
+    "isActive": true
+  },
+  {
+    "name": "Apetito Pizza 41 gr",
+    "slug": "apetito-pizza-41-gr",
+    "description": "Apetito Pizza 41 gr dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 82000,
+    "stock": 17,
+    "images": [
+      "/images/products/snack/apetito-pizza-41-gr.jpg"
+    ],
+    "categorySlug": "snack",
+    "isActive": true
+  },
+  {
+    "name": "Astor Double Coklat 40 gr",
+    "slug": "astor-double-coklat-40-gr",
+    "description": "Astor Double Coklat 40 gr dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 29000,
+    "stock": 48,
+    "images": [
+      "/images/products/snack/astor-double-coklat-40-gr.jpeg"
+    ],
+    "categorySlug": "snack",
+    "isActive": true
+  },
+  {
+    "name": "Astor Vanilla Shake 40 g",
+    "slug": "astor-vanilla-shake-40-g",
+    "description": "Astor Vanilla Shake 40 g dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 38000,
+    "stock": 57,
+    "images": [
+      "/images/products/snack/astor-vanilla-shake-40-g.jpg"
+    ],
+    "categorySlug": "snack",
+    "isActive": true
+  },
+  {
+    "name": "Beng Beng Choco 22 gr",
+    "slug": "beng-beng-choco-22-gr",
+    "description": "Beng Beng Choco 22 gr dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 62000,
+    "stock": 67,
+    "images": [
+      "/images/products/snack/beng-beng-choco-22-gr.jpg"
+    ],
+    "categorySlug": "snack",
+    "isActive": true
+  },
+  {
+    "name": "Beng Beng Maxx 32 gr",
+    "slug": "beng-beng-maxx-32-gr",
+    "description": "Beng Beng Maxx 32 gr dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 90000,
+    "stock": 73,
+    "images": [
+      "/images/products/snack/beng-beng-maxx-32-gr.jpg"
+    ],
+    "categorySlug": "snack",
+    "isActive": true
+  },
+  {
+    "name": "Better Big 27 gr",
+    "slug": "better-big-27-gr",
+    "description": "Better Big 27 gr dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 70000,
+    "stock": 67,
+    "images": [
+      "/images/products/snack/better-big-27-gr.jpg"
+    ],
+    "categorySlug": "snack",
+    "isActive": true
+  },
+  {
+    "name": "BIG BABOL TUTTI FRUTTI 20G",
+    "slug": "big-babol-tutti-frutti-20g",
+    "description": "BIG BABOL TUTTI FRUTTI 20G dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 40000,
+    "stock": 19,
+    "images": [
+      "/images/products/snack/big-babol-tutti-frutti-20g.jpg"
+    ],
+    "categorySlug": "snack",
+    "isActive": true
+  },
+  {
+    "name": "Brio Potato BBQ 49 gr",
+    "slug": "brio-potato-bbq-49-gr",
+    "description": "Brio Potato BBQ 49 gr dengan kualitas terbaik untuk kebutuhan Anda.",
+    "price": 74000,
+    "stock": 94,
+    "images": [
+      "/images/products/snack/brio-potato-bbq-49-gr.jpeg"
+    ],
+    "categorySlug": "snack",
+    "isActive": true
+  }
+]

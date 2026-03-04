@@ -1,36 +1,38 @@
 import axios from 'axios';
 import { Category, Product } from '@/types';
+import productsData from './data/products.json';
 
 // Mock Data
 const MOCK_CATEGORIES: Category[] = [
-  { id: '1', name: 'Makanan', slug: 'makanan', isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), _count: { products: 12 } },
-  { id: '2', name: 'Minuman Dingin', slug: 'minuman', isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), _count: { products: 8 } },
-  { id: '3', name: 'Susu & Olahan', slug: 'susu', isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), _count: { products: 5 } },
-  { id: '4', name: 'Snack Ringan', slug: 'snack', isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), _count: { products: 24 } },
-  { id: '5', name: 'Kebersihan', slug: 'kebersihan', isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), _count: { products: 15 } },
-  { id: '6', name: 'Kebutuhan Bayi', slug: 'bayi', isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), _count: { products: 10 } },
+  { id: '1', name: 'Aksesoris Elektronik', slug: 'aksesoris-elektronik', isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), _count: { products: 5 } },
+  { id: '2', name: 'Fresh Food', slug: 'fresh-food', isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), _count: { products: 8 } },
+  { id: '3', name: 'Ice Cream', slug: 'ice-cream', isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), _count: { products: 4 } },
+  { id: '4', name: 'Kebutuhan Dapur', slug: 'kebutuhan-dapur', isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), _count: { products: 10 } },
+  { id: '5', name: 'Mie & Makanan Instan', slug: 'mie-makanan-instan', isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), _count: { products: 15 } },
+  { id: '6', name: 'Minuman', slug: 'minuman', isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), _count: { products: 12 } },
+  { id: '7', name: 'Snack', slug: 'snack', isActive: true, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), _count: { products: 20 } },
 ];
 
-const MOCK_PRODUCTS: Product[] = [
-  {
-    id: 'p1', name: 'Indomie Goreng Special 85g', slug: 'indomie-goreng', description: 'Mie instan goreng favorit keluarga.', price: 3100, stock: 150, images: ['https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=500&q=80'], isActive: true, categoryId: '1', category: MOCK_CATEGORIES[0], createdAt: new Date().toISOString(), updatedAt: new Date().toISOString()
-  },
-  {
-    id: 'p2', name: 'Susu UHT Full Cream 1L', slug: 'susu-uht-1l', description: 'Susu sapi murni berkualitas.', price: 18500, stock: 45, images: ['https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500&q=80'], isActive: true, categoryId: '3', category: MOCK_CATEGORIES[2], createdAt: new Date().toISOString(), updatedAt: new Date().toISOString()
-  },
-  {
-    id: 'p3', name: 'Keripik Kentang Original 200g', slug: 'kripik-kentang', description: 'Keripik kentang renyah.', price: 15000, stock: 80, images: ['https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=500&q=80'], isActive: true, categoryId: '4', category: MOCK_CATEGORIES[3], createdAt: new Date().toISOString(), updatedAt: new Date().toISOString()
-  },
-  {
-    id: 'p4', name: 'Sabun Mandi Cair 450ml', slug: 'sabun-cair', description: 'Sabun mandi antibakteri.', price: 22000, stock: 30, images: ['https://images.unsplash.com/photo-1584305574647-0cc949a2bb9f?w=500&q=80'], isActive: true, categoryId: '5', category: MOCK_CATEGORIES[4], createdAt: new Date().toISOString(), updatedAt: new Date().toISOString()
-  },
-  {
-    id: 'p5', name: 'Kopi Susu Botol 250ml', slug: 'kopi-susu', description: 'Kopi susu dingin mantap.', price: 8000, stock: 0, images: ['https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=80'], isActive: true, categoryId: '2', category: MOCK_CATEGORIES[1], createdAt: new Date().toISOString(), updatedAt: new Date().toISOString()
-  },
-  {
-    id: 'p6', name: 'Diapers Bayi Size M 40s', slug: 'diapers-m', description: 'Popok bayi lembut dan anti bocor.', price: 55000, stock: 12, images: ['https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=500&q=80'], isActive: true, categoryId: '6', category: MOCK_CATEGORIES[5], createdAt: new Date().toISOString(), updatedAt: new Date().toISOString()
-  }
-];
+const parsedProducts = productsData as any[];
+
+const MOCK_PRODUCTS: Product[] = parsedProducts.map((p, idx) => {
+  const categoryId = MOCK_CATEGORIES.findIndex(c => c.slug === p.categorySlug) + 1;
+  const category = MOCK_CATEGORIES.find(c => c.slug === p.categorySlug) || MOCK_CATEGORIES[0];
+  return {
+    id: `p${idx + 1}`,
+    name: p.name,
+    slug: p.slug,
+    description: p.description,
+    price: p.price,
+    stock: p.stock,
+    images: p.images,
+    isActive: p.isActive,
+    categoryId: categoryId.toString(),
+    category: category,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  };
+});
 
 let MOCK_CART_ITEMS: any[] = [];
 
