@@ -25,15 +25,19 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const refreshCart = useCallback(async () => {
-    if (!isAuthenticated) {
-      setCart(null);
-      return;
-    }
-
     try {
       setIsLoading(true);
-      const response = await cartApi.get();
-      setCart(response.data);
+      if (isAuthenticated) {
+        const response = await cartApi.get();
+        setCart(response.data);
+      } else {
+        const localItems = localStorage.getItem('guest_cart');
+        if (localItems) {
+          try { setCart(JSON.parse(localItems)); } catch (e) { setCart(null); }
+        } else {
+          setCart(null);
+        }
+      }
     } catch (error) {
       console.error('Failed to fetch cart:', error);
     } finally {
@@ -47,13 +51,40 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const addToCart = async (productId: string, quantity = 1) => {
     if (!isAuthenticated) {
-      window.location.href = `/login?callbackUrl=${encodeURIComponent(window.location.pathname)}`;
+      try {
+        const productRes = await (await import('./api')).productsApi.getById(productId);
+        const product = productRes.data;
+
+        let currentCart: Cart = cart ? { ...cart } : {
+          id: 'guest', userId: 'guest', items: [], totalItems: 0, totalAmount: 0, createdAt: new Date().toISOString()
+        };
+
+        const existingIndex = currentCart.items.findIndex(i => i.productId === productId);
+        if (existingIndex >= 0) {
+          currentCart.items[existingIndex].quantity += quantity;
+        } else {
+          currentCart.items.push({
+            id: Date.now().toString(),
+            productId,
+            quantity,
+            product,
+            createdAt: new Date().toISOString()
+          });
+        }
+
+        currentCart.totalItems = currentCart.items.reduce((sum, item) => sum + item.quantity, 0);
+        currentCart.totalAmount = currentCart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+
+        setCart(currentCart);
+        localStorage.setItem('guest_cart', JSON.stringify(currentCart));
+      } catch (error) {
+        toast.error('Gagal menambahkan produk');
+      }
       return;
     }
 
     try {
       await cartApi.addItem({ productId, quantity });
-      toast.success('Produk ditambahkan ke keranjang');
       await refreshCart();
     } catch (error: any) {
       const message = error.response?.data?.message || 'Gagal menambahkan ke keranjang';
@@ -62,6 +93,19 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const updateQuantity = async (itemId: string, quantity: number) => {
+    if (!isAuthenticated && cart) {
+      let currentCart = { ...cart };
+      const itemIndex = currentCart.items.findIndex(i => i.id === itemId);
+      if (itemIndex >= 0) {
+        currentCart.items[itemIndex].quantity = quantity;
+        currentCart.totalItems = currentCart.items.reduce((sum, item) => sum + item.quantity, 0);
+        currentCart.totalAmount = currentCart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+        setCart(currentCart);
+        localStorage.setItem('guest_cart', JSON.stringify(currentCart));
+      }
+      return;
+    }
+
     try {
       await cartApi.updateItem(itemId, { quantity });
       await refreshCart();
@@ -72,6 +116,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const removeItem = async (itemId: string) => {
+    if (!isAuthenticated && cart) {
+      let currentCart = { ...cart };
+      currentCart.items = currentCart.items.filter(i => i.id !== itemId);
+      currentCart.totalItems = currentCart.items.reduce((sum, item) => sum + item.quantity, 0);
+      currentCart.totalAmount = currentCart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+      setCart(currentCart);
+      localStorage.setItem('guest_cart', JSON.stringify(currentCart));
+      toast.success('Produk dihapus dari keranjang');
+      return;
+    }
+
     try {
       await cartApi.removeItem(itemId);
       toast.success('Produk dihapus dari keranjang');
@@ -83,6 +138,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const clearCart = async () => {
+    if (!isAuthenticated) {
+      setCart(null);
+      localStorage.removeItem('guest_cart');
+      toast.success('Keranjang dikosongkan');
+      return;
+    }
+
     try {
       await cartApi.clear();
       setCart(null);

@@ -25,11 +25,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <CartProvider>
           {children}
           <Toaster
-            position="top-right"
-            richColors
-            closeButton
+            position="top-center"
             toastOptions={{
               duration: 3000,
+              className: 'bg-white/95 backdrop-blur border border-border/50 text-foreground font-semibold shadow-xl rounded-2xl flex items-center gap-3',
+              descriptionClassName: 'text-muted-foreground font-medium mt-1',
             }}
           />
         </CartProvider>

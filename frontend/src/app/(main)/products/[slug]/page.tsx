@@ -22,6 +22,7 @@ import { productsApi } from '@/lib/api';
 import { useCart } from '@/lib/cart-context';
 import { Product } from '@/types';
 import { formatPrice } from '@/lib/utils';
+import { toast } from 'sonner';
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -63,6 +64,9 @@ export default function ProductDetailPage() {
   const handleAddToCart = async () => {
     if (product) {
       await addToCart(product.id, quantity);
+      toast.success('Berhasil ditambahkan', {
+        description: `${quantity}x ${product.name} ada di keranjang Anda.`,
+      });
     }
   };
 
@@ -161,17 +165,16 @@ export default function ProductDetailPage() {
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${
-                      selectedImage === index
-                        ? 'border-primary'
-                        : 'border-transparent hover:border-muted-foreground'
-                    }`}
+                    className={`relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg border-2 transition-colors ${selectedImage === index
+                      ? 'border-primary'
+                      : 'border-transparent hover:border-muted-foreground'
+                      }`}
                   >
                     <Image
                       src={image}
                       alt={`${product.name} ${index + 1}`}
                       fill
-                      className="object-cover"
+                      className="object-contain p-1 bg-white"
                     />
                   </button>
                 ))}

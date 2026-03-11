@@ -24,12 +24,6 @@ export default function CartPage() {
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const { cart, isLoading, updateQuantity, removeItem, clearCart } = useCart();
 
-  useEffect(() => {
-    if (!authLoading && !isAuthenticated) {
-      router.push('/login');
-    }
-  }, [isAuthenticated, authLoading, router]);
-
   if (authLoading || isLoading) {
     return (
       <div className="container mx-auto px-4 py-8">
@@ -44,10 +38,6 @@ export default function CartPage() {
         </div>
       </div>
     );
-  }
-
-  if (!isAuthenticated) {
-    return null;
   }
 
   const items = cart?.items || [];

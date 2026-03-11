@@ -84,11 +84,36 @@ export const productsApi = {
   getAllAdmin: async (params?: any) => await productsApi.getAll(params),
   getFeatured: async (limit = 12) => {
     await delay(300);
-    return { data: MOCK_PRODUCTS.slice(0, limit) };
+    // Curate visually pleasing and cohesive products for the homepage
+    const curatedSlugs = [
+      'aice-chocolate-crispy-60gr',
+      'aice-mochi-chocolate-45ml',
+      'aice-strawberry-crispy',
+      'abc-kcp-mns-275ml',
+      'belfoods-chicken-nugget-crunchy',
+      'bango-kecap-manis-400-ml',
+      'abc-sardines-bumbu-serundeng-400gr',
+      'aice-durian-cup'
+    ];
+    let featured = MOCK_PRODUCTS.filter(p => curatedSlugs.includes(p.slug));
+
+    // Fill up the rest with other items if needed, avoiding visually cluttered ones like batteries if possible
+    if (featured.length < limit) {
+      const others = MOCK_PRODUCTS.filter(p => !curatedSlugs.includes(p.slug) && p.categorySlug !== 'aksesoris-elektronik');
+      featured = [...featured, ...others.slice(0, limit - featured.length)];
+    }
+
+    return { data: featured.slice(0, limit) };
   },
   getOne: async (slug: string) => {
     await delay(200);
     const product = MOCK_PRODUCTS.find(p => p.slug === slug);
+    if (!product) throw new Error('Not found');
+    return { data: product };
+  },
+  getById: async (id: string) => {
+    await delay(200);
+    const product = MOCK_PRODUCTS.find(p => p.id === id);
     if (!product) throw new Error('Not found');
     return { data: product };
   },

@@ -8,10 +8,10 @@ export const metadata = {
 
 export default function AboutPage() {
     return (
-        <div className="min-h-screen bg-background text-foreground selection:bg-primary/20 pt-24 pb-20">
+        <div className="min-h-screen bg-background text-foreground selection:bg-primary/20 pt-16 pb-20">
 
             {/* ── 1. HERO SECTION ─────────────────────────────────────────────── */}
-            <section className="relative px-6 py-20 lg:py-32 overflow-hidden flex flex-col items-center justify-center text-center mb-20">
+            <section className="relative px-6 pt-12 pb-20 lg:pt-16 lg:pb-32 overflow-hidden flex flex-col items-center justify-center text-center mb-10 lg:mb-20">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none z-0" />
 
                 <div className="relative z-10 max-w-4xl mx-auto space-y-8">

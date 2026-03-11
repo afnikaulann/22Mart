@@ -26,10 +26,8 @@ export function ProductCard({ product }: ProductCardProps) {
     e.stopPropagation();
     if (!isOutOfStock) {
       await addToCart(product.id, 1);
-      toast.success('Di Keranjang', {
-        description: `${product.name} siap di-checkout.`,
-        duration: 2000,
-        position: 'bottom-center'
+      toast.success('Berhasil ditambahkan', {
+        description: `${product.name} ada di keranjang Anda.`,
       });
     }
   };
@@ -37,21 +35,21 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
       href={`/products/${product.slug}`}
-      className="group flex flex-col gap-5 block outline-none"
+      className="group flex flex-col gap-4 block outline-none"
     >
-      {/* ── IMAGE WRAPPER (No borders, just a beautiful muted expanse) ── */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] bg-muted/40 transition-all duration-700 ease-in-out group-hover:bg-muted/60">
+      {/* ── IMAGE WRAPPER (Square, clean white background, object-contain) ── */}
+      <div className="relative aspect-square w-full overflow-hidden rounded-[2rem] bg-white border border-border/40 transition-all duration-500 ease-in-out group-hover:border-primary/30 group-hover:shadow-lg">
 
         {/* Subtle Labels */}
         {isNew && !isOutOfStock && (
           <div className="absolute top-4 left-4 z-20">
-            <span className="bg-foreground text-background text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full">Baru</span>
+            <span className="bg-foreground text-background text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-sm">Baru</span>
           </div>
         )}
 
         {isOutOfStock && (
           <div className="absolute top-4 left-4 z-20">
-            <span className="bg-destructive text-destructive-foreground text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full">Habis</span>
+            <span className="bg-destructive text-destructive-foreground text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full shadow-sm">Habis</span>
           </div>
         )}
 
@@ -60,34 +58,35 @@ export function ProductCard({ product }: ProductCardProps) {
           src={imageUrl}
           alt={product.name}
           fill
-          className={`object-cover object-center p-4 transition-transform duration-1000 ease-out group-hover:scale-[1.03] group-hover:p-0 ${isOutOfStock ? 'opacity-50 grayscale' : ''}`}
+          className={`object-contain object-center p-6 transition-transform duration-700 ease-out group-hover:scale-110 ${isOutOfStock ? 'opacity-50 grayscale' : ''}`}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-
-        {/* ── FADE-IN HOVER ACTION ── */}
-        {!isOutOfStock && (
-          <div className="absolute inset-0 bg-background/5 backdrop-blur-[2px] opacity-0 transition-opacity duration-500 flex items-end justify-center pb-6 group-hover:opacity-100">
-            <Button
-              onClick={handleAddToCart}
-              className="w-[85%] rounded-full h-12 bg-white/95 text-black hover:bg-white hover:scale-105 shadow-xl transition-all duration-300 font-semibold"
-            >
-              <ShoppingBag className="mr-2 h-4 w-4" /> Masukkan Keranjang
-            </Button>
-          </div>
-        )}
       </div>
 
-      {/* ── TYPOGRAPHY (Clean, tracking-tight, minimalist) ── */}
-      <div className="flex flex-col gap-1 px-1">
+      {/* ── TYPOGRAPHY & ACTIONS ── */}
+      <div className="flex flex-col gap-1 px-2">
         <p className="text-[10px] sm:text-xs text-muted-foreground tracking-widest uppercase">
           {product.category?.name || 'Kategori'}
         </p>
-        <h3 className="text-sm font-semibold text-foreground/80 truncate tracking-tight group-hover:text-primary transition-colors">
+        <h3 className="text-sm font-semibold text-foreground/90 truncate tracking-tight group-hover:text-primary transition-colors">
           {product.name}
         </h3>
-        <p className="text-base font-bold text-foreground tracking-tight">
-          {formatPrice(product.price)}
-        </p>
+
+        <div className="flex items-center justify-between mt-1">
+          <p className="text-base sm:text-lg font-bold text-foreground tracking-tight">
+            {formatPrice(product.price)}
+          </p>
+          {!isOutOfStock && (
+            <Button
+              size="icon"
+              className="h-9 w-9 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all shadow-sm"
+              onClick={handleAddToCart}
+              aria-label="Masukkan Ke Keranjang"
+            >
+              <ShoppingBag className="h-4 w-4" />
+            </Button>
+          )}
+        </div>
       </div>
     </Link>
   );

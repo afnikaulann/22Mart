@@ -50,70 +50,79 @@ export default function Home() {
         </p>
 
         <div className="relative z-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="h-14 px-8 rounded-full bg-primary text-white hover:bg-primary/90 text-base font-bold shadow-xl transition-transform hover:scale-105">
-            Mulai Belanja
+          <Button asChild size="lg" className="h-14 px-8 rounded-full bg-primary text-white hover:bg-primary/90 text-base font-bold shadow-xl transition-transform hover:scale-105">
+            <Link href="/products">Mulai Belanja</Link>
           </Button>
-          <Button size="lg" variant="outline" className="h-14 px-8 rounded-full border-border bg-white text-foreground hover:bg-muted text-base font-bold transition-all">
-            Produk Terbaru
+          <Button asChild size="lg" variant="outline" className="h-14 px-8 rounded-full border-border bg-white text-foreground hover:bg-muted text-base font-bold transition-all">
+            <Link href="/products?sortBy=newest">Produk Terbaru</Link>
           </Button>
         </div>
       </section>
 
-      {/* ── 2. BENTO BOX CATEGORY GRID ───────────────────────────────────── */}
-      <section className="px-6 py-16 max-w-[1200px] mx-auto">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-8 gap-6">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Eksplorasi</h2>
-            <p className="text-xl text-muted-foreground font-medium">Kategori pilihan kami untuk gaya hidup Anda.</p>
+      {/* ── 2. IMMERSIVE BRAND STORY (Editorial Layout) ────────────────────── */}
+      <section className="px-6 py-20 lg:py-32 bg-white">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+            {/* Left: Authentic Store Imagery */}
+            <div className="relative aspect-[4/5] lg:aspect-square rounded-[2rem] overflow-hidden group shadow-2xl border border-border/50">
+              <Image
+                src="/images/foto toko/gambar toko.jpg"
+                alt="Gerai Fisik 22Mart"
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+              />
+              {/* Elegant overlay badge */}
+              <div className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-md p-6 rounded-2xl shadow-2xl transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                <div className="flex items-center gap-4">
+                  <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <Star className="h-6 w-6 text-primary fill-primary/20" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg text-foreground">Gerai Fisik Terpadu</h4>
+                    <p className="text-sm font-medium text-muted-foreground">Kunjungi langsung toko kami untuk pengalaman berbelanja maksimal.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Editorial Typography */}
+            <div className="flex flex-col justify-center space-y-8 lg:pr-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-muted/50 w-fit">
+                <Sparkles className="h-4 w-4 text-primary fill-primary" />
+                <span className="text-sm font-bold tracking-wide">Lebih Dekat Dengan Anda</span>
+              </div>
+
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
+                Pusat Belanja<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Premium.</span>
+              </h2>
+
+              <p className="text-xl text-muted-foreground font-medium leading-relaxed">
+                Kami tidak hanya melayani secara virtual. Berkunjunglah ke gerai fisik 22Mart untuk menyaksikan langsung bagaimana kami menjaga standar kualitas tinggi di setiap etalase yang ada.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 border-t border-border/50">
+                <div className="space-y-3">
+                  <h3 className="text-xl font-bold">Layanan Personal</h3>
+                  <p className="text-muted-foreground font-medium">Pramuniaga ahli kami siap membantu mencarikan setiap kebutuhan Anda.</p>
+                </div>
+                <div className="space-y-3">
+                  <h3 className="text-xl font-bold">Fasilitas Modern</h3>
+                  <p className="text-muted-foreground font-medium">Ruang ber-AC yang nyaman dengan infrastruktur pendingin terbaik di kelasnya.</p>
+                </div>
+              </div>
+
+              <div className="pt-6">
+                <Button asChild variant="link" className="p-0 h-auto text-lg font-bold hover:text-primary group">
+                  <Link href="/about" className="flex items-center">
+                    Lihat Lokasi & Jam Buka <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
           </div>
-          <Button asChild variant="link" className="text-foreground text-lg p-0 h-auto font-semibold hover:text-primary group">
-            <Link href="/categories">
-              Semua Kategori <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Button>
-        </div>
-
-        {/* Bento Grid layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[400px]">
-
-          {/* Main Large Box */}
-          <Link href="/products?category=segar" className="group relative overflow-hidden rounded-[1.5rem] bg-muted/50 md:col-span-2 md:row-span-2">
-            <Image
-              src="https://images.unsplash.com/photo-1608686207856-001b95cf60ca?q=80&w=1200&auto=format&fit=crop"
-              alt="Produk Segar"
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div className="absolute bottom-6 left-6 text-white">
-              <h3 className="text-2xl font-bold tracking-tight mb-1">Produk Segar</h3>
-              <p className="text-white/80 text-sm font-medium">Sayuran & Buah Petani Lokal</p>
-            </div>
-          </Link>
-
-          {/* Top Right Box */}
-          <Link href="/products?category=daging" className="group relative overflow-hidden rounded-[1.5rem] bg-muted/50 md:col-span-2 md:row-span-1">
-            <Image
-              src="https://images.unsplash.com/photo-1603048297172-c92544798d5e?q=80&w=800&auto=format&fit=crop"
-              alt="Daging Premium"
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div className="absolute bottom-4 left-4 text-white">
-              <h3 className="text-xl font-bold tracking-tight mb-0">Daging Premium</h3>
-            </div>
-          </Link>
-
-          {/* Bottom Right Box */}
-          <Link href="/products?category=kopi" className="group relative overflow-hidden rounded-[1.5rem] bg-primary/5 md:col-span-2 md:row-span-1 flex flex-col justify-end p-6 border border-border/50 hover:border-primary/20 transition-colors">
-            <div className="relative z-10">
-              <Star className="h-8 w-8 text-primary mb-3 fill-primary/20" />
-              <h3 className="text-xl font-bold tracking-tight mb-1">Kurasi Khusus</h3>
-              <p className="text-muted-foreground text-sm font-medium">Temukan produk langka berkualitas.</p>
-            </div>
-          </Link>
-
         </div>
       </section>
 

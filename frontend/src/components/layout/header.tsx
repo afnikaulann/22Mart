@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import {
@@ -79,9 +80,17 @@ export function Header() {
       >
         <div className="container mx-auto px-6 h-auto flex items-center justify-between gap-8 max-w-[1400px]">
 
-          {/* Logo - Ultra Clean */}
-          <Link href="/" className="font-extrabold text-2xl tracking-tighter text-white shrink-0 group">
-            22<span className="text-secondary group-hover:text-white transition-colors">Mart</span>.
+          {/* Logo - Kigo Image */}
+          <Link href="/" className="font-extrabold text-2xl tracking-tighter text-white shrink-0 group flex items-center">
+            <div className="relative h-10 w-24">
+              <Image
+                src="/images/LOGO/LOGO .jpeg"
+                alt="22Mart Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           </Link>
 
           {/* Desktop Nav Links */}
@@ -187,8 +196,15 @@ export function Header() {
       {mobileOpen && (
         <div className="fixed inset-0 z-[100] bg-white lg:hidden flex flex-col h-[100dvh]">
           <div className="flex items-center justify-between p-6 border-b">
-            <span className="font-extrabold text-2xl tracking-tighter text-foreground">
-              22<span className="text-muted-foreground">Mart</span>.
+            <span className="font-extrabold text-2xl tracking-tighter text-foreground flex items-center">
+              <div className="relative h-8 w-20">
+                <Image
+                  src="/images/LOGO/LOGO .jpeg"
+                  alt="22Mart Logo"
+                  fill
+                  className="object-contain filter brightness-0"
+                />
+              </div>
             </span>
             <button onClick={() => setMobileOpen(false)} className="p-2 rounded-full bg-muted text-foreground hover:bg-muted/80">
               <X className="h-5 w-5" strokeWidth={2.5} />

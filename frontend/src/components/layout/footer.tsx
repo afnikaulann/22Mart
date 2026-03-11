@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 export function Footer() {
@@ -10,8 +11,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 lg:gap-8 mb-32">
 
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block text-4xl font-extrabold tracking-tighter mb-8">
-              22Mart.
+            <Link href="/" className="inline-flex items-center mb-8">
+              <div className="relative h-12 w-32">
+                <Image
+                  src="/images/LOGO/logo.jpeg"
+                  alt="22Mart Logo"
+                  fill
+                  className="object-contain filter brightness-0 invert"
+                />
+              </div>
             </Link>
             <p className="text-background/60 text-lg max-w-sm mb-10 leading-relaxed font-medium tracking-tight">
               Eksklusivitas dalam setiap kebutuhan harian Anda. Kurasi premium, layanan tanpa kompromi.

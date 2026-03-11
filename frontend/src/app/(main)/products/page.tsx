@@ -128,43 +128,45 @@ function ProductsContent() {
           )}
         </div>
 
-        {/* Filters */}
-        <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-wrap items-center gap-2">
-            {/* Mobile filter toggle */}
-            <Button
-              variant="outline"
-              className="lg:hidden"
-              onClick={() => setShowFilters(!showFilters)}
-            >
-              <Filter className="mr-2 h-4 w-4" />
-              Filter
-            </Button>
-
-            {/* Category filter - Desktop */}
-            <div className="hidden lg:block">
-              <Select value={categoryId || 'all'} onValueChange={(value) => updateParams('categoryId', value)}>
-                <SelectTrigger className="w-[200px]">
-                  <SelectValue placeholder="Semua Kategori" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Semua Kategori</SelectItem>
-                  {categories.map((category) => (
-                    <SelectItem key={category.id} value={category.id}>
-                      {category.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+        {/* Categories Horizontal Tabs */}
+        {categories.length > 0 && (
+          <div className="mb-6 w-full overflow-x-auto pb-2 scrollbar-none">
+            <div className="flex gap-3">
+              <button
+                onClick={() => updateParams('categoryId', 'all')}
+                className={`whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${!categoryId || categoryId === 'all'
+                    ? 'bg-primary text-primary-foreground shadow-md'
+                    : 'bg-white text-foreground hover:bg-muted border border-border'
+                  }`}
+              >
+                Semua Produk
+              </button>
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => updateParams('categoryId', category.id)}
+                  className={`whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${categoryId === category.id
+                      ? 'bg-primary text-primary-foreground shadow-md'
+                      : 'bg-white text-foreground hover:bg-muted border border-border'
+                    }`}
+                >
+                  {category.name}
+                </button>
+              ))}
             </div>
+          </div>
+        )}
 
+        {/* Filters & Sort */}
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
             {/* Active filters */}
             {hasFilters && (
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={clearFilters}
-                className="text-destructive hover:text-destructive"
+                className="text-destructive hover:bg-destructive/10 hover:text-destructive"
               >
                 <X className="mr-1 h-4 w-4" />
                 Hapus Filter
@@ -174,9 +176,9 @@ function ProductsContent() {
 
           {/* Sort */}
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">Urutkan:</span>
+            <span className="text-sm text-muted-foreground hidden sm:inline">Urutkan:</span>
             <Select value={sortBy} onValueChange={(value) => updateParams('sortBy', value)}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-[180px] bg-white">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -189,31 +191,6 @@ function ProductsContent() {
             </Select>
           </div>
         </div>
-
-        {/* Mobile filters panel */}
-        {showFilters && (
-          <div className="mb-6 rounded-lg border bg-card p-4 lg:hidden">
-            <h3 className="mb-4 font-semibold">Filter</h3>
-            <div className="space-y-4">
-              <div>
-                <label className="mb-2 block text-sm font-medium">Kategori</label>
-                <Select value={categoryId || 'all'} onValueChange={(value) => updateParams('categoryId', value)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Semua Kategori" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Semua Kategori</SelectItem>
-                    {categories.map((category) => (
-                      <SelectItem key={category.id} value={category.id}>
-                        {category.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Products grid */}
         {isLoading ? (

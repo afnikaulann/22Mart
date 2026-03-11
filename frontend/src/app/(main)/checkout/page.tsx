@@ -381,8 +381,10 @@ export default function CheckoutPage() {
                   <div className="p-4 rounded-2xl border border-border bg-card shadow-sm flex flex-col items-center justify-center text-center">
                     <p className="font-medium mb-3 text-xs text-muted-foreground">Scan QRIS Berikut untuk Pembayaran E-Wallet</p>
                     <div className="bg-white p-3 rounded-2xl border shadow-sm flex flex-col items-center">
-                      <QrCode className="h-32 w-32 text-foreground" strokeWidth={1} />
-                      <p className="mt-3 text-[10px] font-bold font-mono tracking-widest px-3 py-1 bg-muted rounded-full">NMID: ID2024000123</p>
+                      <div className="relative h-32 w-32 mb-2">
+                        <Image src="/images/payment/qr payment.jpeg" alt="QRIS" fill className="object-contain" />
+                      </div>
+                      <p className="mt-2 text-[10px] font-bold font-mono tracking-widest px-3 py-1 bg-muted rounded-full">NMID: ID2024000123</p>
                     </div>
                     <div className="mt-4 w-full flex justify-between items-center text-sm px-2">
                       <span className="text-muted-foreground font-medium">Total Tagihan</span>
