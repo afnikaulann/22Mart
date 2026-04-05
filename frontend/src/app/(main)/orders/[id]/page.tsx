@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useAuth } from '@/lib/auth-context';
+import { toast } from 'sonner';
 import { ordersApi } from '@/lib/api';
 import { Order } from '@/types';
 import {
@@ -32,6 +33,7 @@ export default function OrderDetailPage() {
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const [order, setOrder] = useState<Order | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isUploading, setIsUploading] = useState(false);
 
   const orderId = params.id as string;
 
@@ -59,6 +61,30 @@ export default function OrderDetailPage() {
 
     fetchOrder();
   }, [isAuthenticated, orderId, router]);
+
+  const handleUploadProof = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!order) return;
+    
+    const formData = new FormData(e.currentTarget);
+    const file = formData.get('paymentProof');
+    if (!file || (file as File).size === 0) return;
+
+    setIsUploading(true);
+    try {
+      // Use our new upload mock API
+      await (ordersApi as any).uploadPaymentProof(order.id, formData);
+      toast.success('Bukti transfer berhasil diunggah!');
+      
+      // Refresh order to show the image
+      const response = await ordersApi.getOne(order.id);
+      setOrder(response.data);
+    } catch (error) {
+      toast.error('Gagal mengunggah bukti pembayaran');
+    } finally {
+      setIsUploading(false);
+    }
+  };
 
   if (authLoading || isLoading) {
     return (
@@ -218,6 +244,42 @@ export default function OrderDetailPage() {
                 {getPaymentMethodText(order.paymentMethod)}
               </p>
             </div>
+
+            {/* Upload Bukti Pembayaran (Jika Manual Transfer & PENDING) */}
+            {order.paymentMethod === 'TRANSFER' && order.status === 'PENDING' && (
+              <div className="rounded-xl border border-primary/50 bg-primary/5 p-6 space-y-4">
+                <div className="flex items-center gap-2">
+                  <FileText className="h-5 w-5 text-primary" />
+                  <h3 className="font-semibold text-primary">Upload Bukti Transfer</h3>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Silakan transfer senilai <b>{formatPrice(order.totalAmount)}</b> ke rekening BCA 123456789 a.n 22Mart dan upload bukti pembayaran di sini.
+                </p>
+                {order.paymentProofImage ? (
+                  <div className="mt-4">
+                    <p className="text-sm font-medium text-emerald-600 mb-2 flex items-center gap-1">
+                      <Check className="h-4 w-4" /> Bukti telah diupload, menunggu konfirmasi toko
+                    </p>
+                    <div className="relative h-40 w-32 overflow-hidden rounded-lg border bg-muted">
+                      <Image src={order.paymentProofImage} alt="Bukti Pembayaran" fill className="object-cover" />
+                    </div>
+                  </div>
+                ) : (
+                  <form onSubmit={handleUploadProof} className="space-y-3 pt-2">
+                    <input 
+                      type="file" 
+                      accept="image/*"
+                      name="paymentProof"
+                      required
+                      className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20" 
+                    />
+                    <Button type="submit" className="w-full" disabled={isUploading}>
+                      {isUploading ? 'Mengunggah...' : 'Unggah Bukti Transaksi'}
+                    </Button>
+                  </form>
+                )}
+              </div>
+            )}
 
             {/* Notes */}
             {order.notes && (

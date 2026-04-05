@@ -18,7 +18,7 @@ import {
 } from '@/lib/utils';
 
 const statusOptions = [
-  { value: '', label: 'Semua Status' },
+  { value: 'ALL', label: 'Semua Status' },
   { value: 'PENDING', label: 'Menunggu Konfirmasi' },
   { value: 'PROCESSING', label: 'Diproses' },
   { value: 'SHIPPED', label: 'Dikirim' },
@@ -31,7 +31,7 @@ export default function AdminOrdersPage() {
   const [pagination, setPagination] = useState<Pagination | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState('');
-  const [statusFilter, setStatusFilter] = useState('');
+  const [statusFilter, setStatusFilter] = useState('ALL');
   const [page, setPage] = useState(1);
 
   const fetchOrders = async () => {
@@ -39,7 +39,7 @@ export default function AdminOrdersPage() {
     try {
       const response = await ordersApi.getAllAdmin({
         search: search || undefined,
-        status: statusFilter || undefined,
+        status: statusFilter === 'ALL' ? undefined : statusFilter || undefined,
         page,
         limit: 10,
       });

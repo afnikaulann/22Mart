@@ -16,7 +16,7 @@ export default function AdminUsersPage() {
   const [pagination, setPagination] = useState<Pagination | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState('');
-  const [roleFilter, setRoleFilter] = useState('');
+  const [roleFilter, setRoleFilter] = useState('ALL');
   const [page, setPage] = useState(1);
 
   const fetchUsers = async () => {
@@ -24,7 +24,7 @@ export default function AdminUsersPage() {
     try {
       const response = await usersApi.getAll({
         search: search || undefined,
-        role: roleFilter || undefined,
+        role: roleFilter === 'ALL' ? undefined : roleFilter || undefined,
         page,
         limit: 10,
       });
@@ -77,7 +77,7 @@ export default function AdminUsersPage() {
             <SelectValue placeholder="Semua Role" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">Semua Role</SelectItem>
+            <SelectItem value="ALL">Semua Role</SelectItem>
             <SelectItem value="USER">User</SelectItem>
             <SelectItem value="ADMIN">Admin</SelectItem>
           </SelectContent>

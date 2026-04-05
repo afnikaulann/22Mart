@@ -54,7 +54,7 @@ export default function AdminProductsPage() {
   const [pagination, setPagination] = useState<Pagination | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('ALL');
   const [page, setPage] = useState(1);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
@@ -67,7 +67,7 @@ export default function AdminProductsPage() {
     try {
       const response = await productsApi.getAllAdmin({
         search: search || undefined,
-        categoryId: categoryFilter || undefined,
+        categoryId: categoryFilter === 'ALL' ? undefined : categoryFilter || undefined,
         page,
         limit: 10,
       });
@@ -249,14 +249,25 @@ export default function AdminProductsPage() {
                   {...register('description')}
                 />
               </div>
-              <div>
-                <label className="text-sm font-medium">URL Gambar</label>
-                <input
-                  type="text"
-                  placeholder="Pisahkan dengan koma untuk multiple gambar"
-                  className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm"
-                  {...register('images')}
-                />
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Gambar Produk</label>
+                <div className="flex items-center gap-4">
+                  <input type="hidden" {...register('images')} />
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="flex-1 w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20"
+                    onChange={(e) => {
+                       const file = e.target.files?.[0];
+                       if (file) {
+                         const url = URL.createObjectURL(file);
+                         setValue('images', url); // store mock URL for display
+                         toast.success('Gambar disiapkan!');
+                       }
+                    }}
+                  />
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">Pilih gambar dari perangkat Anda. (Demo: menggunakan URL Object memori sementara)</p>
               </div>
               <div className="flex items-center gap-2">
                 <input
@@ -304,7 +315,7 @@ export default function AdminProductsPage() {
             <SelectValue placeholder="Semua Kategori" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="">Semua Kategori</SelectItem>
+            <SelectItem value="ALL">Semua Kategori</SelectItem>
             {categories.map((cat) => (
               <SelectItem key={cat.id} value={cat.id}>
                 {cat.name}

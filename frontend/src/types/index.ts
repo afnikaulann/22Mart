@@ -91,6 +91,7 @@ export interface Order {
   shippingAddress: string;
   shippingCost: number;
   paymentMethod: PaymentMethod;
+  paymentProofImage?: string;
   notes?: string;
   userId: string;
   user?: Pick<User, 'id' | 'name' | 'email' | 'phone'>;

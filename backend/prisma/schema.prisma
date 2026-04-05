@@ -124,6 +124,7 @@ model Order {
   shippingAddress String
   shippingCost    Float         @default(0)
   paymentMethod   PaymentMethod @default(COD)
+  paymentProof    String?
   notes           String?
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt

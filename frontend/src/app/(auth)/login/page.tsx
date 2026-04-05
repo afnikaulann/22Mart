@@ -53,7 +53,11 @@ function LoginForm() {
     try {
       await login(data.email, data.password);
       toast.success('Login berhasil! Selamat datang kembali 👋');
-      router.push(callbackUrl);
+      if (data.email === 'admin@22mart.id') {
+        router.push('/admin');
+      } else {
+        router.push(callbackUrl);
+      }
     } catch (error: any) {
       const message = error.response?.data?.message || 'Login gagal. Silakan coba lagi.';
       toast.error(message);
@@ -153,7 +157,8 @@ function LoginForm() {
 
         {/* Demo hint */}
         <div className="mt-4 rounded-lg bg-muted/60 px-4 py-3 text-sm text-muted-foreground">
-          💡 <span className="font-medium">Demo:</span> Masukkan email dan password apapun untuk mencoba.
+          💡 <span className="font-medium">Demo:</span> Masukkan email & password acak untuk Pembeli.<br/>
+          Untuk Admin, email: <b>admin@22mart.id</b> & pass: <b>admin</b>
         </div>
 
         {/* Register link */}

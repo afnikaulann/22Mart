@@ -15,7 +15,7 @@ const MOCK_CATEGORIES: Category[] = [
 
 const parsedProducts = productsData as any[];
 
-const MOCK_PRODUCTS: Product[] = parsedProducts.map((p, idx) => {
+let MOCK_PRODUCTS: Product[] = parsedProducts.map((p, idx) => {
   const categoryId = MOCK_CATEGORIES.findIndex(c => c.slug === p.categorySlug) + 1;
   const category = MOCK_CATEGORIES.find(c => c.slug === p.categorySlug) || MOCK_CATEGORIES[0];
   return {
@@ -35,6 +35,7 @@ const MOCK_PRODUCTS: Product[] = parsedProducts.map((p, idx) => {
 });
 
 let MOCK_CART_ITEMS: any[] = [];
+let MOCK_ORDERS: any[] = []; // Menambahkan in-memory state untuk orders
 
 // Helper to simulate network delay
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -47,12 +48,18 @@ export const authApi = {
   },
   login: async (data: any) => {
     await delay(500);
+    if (data.email === 'admin@22mart.id' && data.password === 'admin') {
+      return { data: { message: 'Success', user: { id: 'admin1', name: 'Admin Toko', email: data.email, role: 'ADMIN' as const, createdAt: new Date().toISOString() }, accessToken: 'mock-admin-token' } };
+    }
     return { data: { message: 'Success', user: { id: 'u1', name: 'Demo User', email: data.email, role: 'USER' as const, createdAt: new Date().toISOString() }, accessToken: 'mock-jwt-token' } };
   },
   getProfile: async () => {
     await delay(300);
     const token = typeof window !== 'undefined' ? localStorage.getItem('accessToken') : null;
     if (!token) throw new Error('Unauthorized');
+    if (token === 'mock-admin-token') {
+      return { data: { id: 'admin1', name: 'Admin Toko', email: 'admin@22mart.id', role: 'ADMIN' as const, createdAt: new Date().toISOString() } };
+    }
     return { data: { id: 'u1', name: 'Demo User', email: 'demo@example.com', role: 'USER' as const, createdAt: new Date().toISOString() } };
   },
 };
@@ -99,7 +106,7 @@ export const productsApi = {
 
     // Fill up the rest with other items if needed, avoiding visually cluttered ones like batteries if possible
     if (featured.length < limit) {
-      const others = MOCK_PRODUCTS.filter(p => !curatedSlugs.includes(p.slug) && p.categorySlug !== 'aksesoris-elektronik');
+      const others = MOCK_PRODUCTS.filter(p => !curatedSlugs.includes(p.slug) && p.category.slug !== 'aksesoris-elektronik');
       featured = [...featured, ...others.slice(0, limit - featured.length)];
     }
 
@@ -121,9 +128,33 @@ export const productsApi = {
     await delay(200);
     return { data: MOCK_PRODUCTS.filter(p => p.id !== id).slice(0, limit) };
   },
-  create: async (data: any) => ({ data: { id: Date.now().toString(), ...data } }),
-  update: async (id: string, data: any) => ({ data: { id, ...data } }),
-  delete: async (id: string) => ({ data: { success: true } }),
+  create: async (data: any) => {
+    await delay(300);
+    const newProduct = {
+      ...data,
+      id: `p${MOCK_PRODUCTS.length + 1}`,
+      slug: data.name.toLowerCase().replace(/\s+/g, '-'),
+      category: MOCK_CATEGORIES.find(c => c.id === data.categoryId) || MOCK_CATEGORIES[0],
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+    MOCK_PRODUCTS.unshift(newProduct);
+    return { data: newProduct };
+  },
+  update: async (id: string, data: any) => {
+    await delay(300);
+    const idx = MOCK_PRODUCTS.findIndex(p => p.id === id);
+    if (idx !== -1) {
+      MOCK_PRODUCTS[idx] = { ...MOCK_PRODUCTS[idx], ...data, updatedAt: new Date().toISOString() };
+      return { data: MOCK_PRODUCTS[idx] };
+    }
+    throw new Error('Product not found');
+  },
+  delete: async (id: string) => {
+    await delay(200);
+    MOCK_PRODUCTS = MOCK_PRODUCTS.filter(p => p.id !== id);
+    return { data: { success: true } };
+  },
 };
 
 // Cart API Mock
@@ -168,13 +199,78 @@ export const cartApi = {
 
 // Orders API Mock
 export const ordersApi = {
-  create: async (data: any) => { await delay(500); return { data: { id: 'o1', orderNumber: 'ORD-123', status: 'PENDING' } }; },
-  getAll: async (params?: any) => ({ data: { orders: [], pagination: { page: 1, limit: 10, total: 0, totalPages: 1 } } }),
-  getOne: async (id: string) => ({ data: { id, orderNumber: 'ORD-123', status: 'PENDING' as const, totalAmount: 0, shippingAddress: '', shippingCost: 0, paymentMethod: 'COD' as const, userId: 'u1', items: [], createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() } }),
-  getAllAdmin: async (params?: any) => ({ data: { orders: [], pagination: { page: 1, limit: 10, total: 0, totalPages: 1 } } }),
-  getOneAdmin: async (id: string) => ({ data: { id, orderNumber: 'ORD-123', items: [] } }),
-  updateStatus: async (id: string, status: string) => ({ data: { id, status } }),
-  getStats: async () => ({ data: { totalOrders: 0, pendingOrders: 0, processingOrders: 0, completedOrders: 0, cancelledOrders: 0, totalRevenue: 0 } }),
+  create: async (data: any) => { 
+    await delay(500); 
+    const newOrder = { 
+      ...data,
+      id: `o${MOCK_ORDERS.length + 1}`, 
+      orderNumber: `ORD-${Math.floor(Math.random() * 10000)}`, 
+      status: 'PENDING',
+      user: { id: 'u1', name: 'Demo User', email: 'demo@example.com', phone: '08123456789' },
+      createdAt: new Date().toISOString(), 
+      updatedAt: new Date().toISOString() 
+    };
+    MOCK_ORDERS.unshift(newOrder);
+    return { data: newOrder }; 
+  },
+  getAll: async (params?: any) => {
+    await delay(300);
+    const userOrders = MOCK_ORDERS.filter(o => o.userId === 'u1' || !o.userId);
+    return { data: { orders: userOrders, pagination: { page: 1, limit: 10, total: userOrders.length, totalPages: 1 } } };
+  },
+  getOne: async (id: string) => {
+    await delay(200);
+    const order = MOCK_ORDERS.find(o => o.id === id);
+    if (!order) throw new Error('Order not found');
+    return { data: order };
+  },
+  getAllAdmin: async (params?: any) => {
+    await delay(300);
+    let filtered = [...MOCK_ORDERS];
+    if (params?.status) filtered = filtered.filter(o => o.status === params.status);
+    if (params?.search) filtered = filtered.filter(o => o.orderNumber.includes(params.search));
+    return { data: { orders: filtered, pagination: { page: 1, limit: 10, total: filtered.length, totalPages: 1 } } };
+  },
+  getOneAdmin: async (id: string) => {
+    await delay(200);
+    const order = MOCK_ORDERS.find(o => o.id === id);
+    if (!order) throw new Error('Order not found');
+    return { data: order };
+  },
+  updateStatus: async (id: string, status: string) => {
+    await delay(300);
+    const order = MOCK_ORDERS.find(o => o.id === id);
+    if (order) {
+      order.status = status;
+      order.updatedAt = new Date().toISOString();
+      return { data: order };
+    }
+    throw new Error('Order not found');
+  },
+  uploadPaymentProof: async (id: string, formData: FormData) => {
+    await delay(500);
+    const order = MOCK_ORDERS.find(o => o.id === id);
+    if (order) {
+      // Simulate file upload by setting a mock URL
+      order.paymentProofImage = URL.createObjectURL(formData.get('file') as Blob) || '/images/bca-mock.jpg';
+      order.updatedAt = new Date().toISOString();
+      return { data: order };
+    }
+    throw new Error('Order not found');
+  },
+  getStats: async () => {
+    await delay(300);
+    return { 
+      data: { 
+        totalOrders: MOCK_ORDERS.length, 
+        pendingOrders: MOCK_ORDERS.filter(o => o.status === 'PENDING').length, 
+        processingOrders: MOCK_ORDERS.filter(o => o.status === 'PROCESSING').length, 
+        completedOrders: MOCK_ORDERS.filter(o => o.status === 'DELIVERED').length, 
+        cancelledOrders: MOCK_ORDERS.filter(o => o.status === 'CANCELLED').length, 
+        totalRevenue: MOCK_ORDERS.filter(o => o.status === 'DELIVERED').reduce((acc, o) => acc + o.totalAmount, 0) 
+      } 
+    };
+  },
 };
 
 // Users API Mock
