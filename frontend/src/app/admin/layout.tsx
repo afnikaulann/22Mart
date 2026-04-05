@@ -78,7 +78,7 @@ export default function AdminLayout({
   return (
     <div className="flex min-h-screen">
       {/* Sidebar - Desktop */}
-      <aside className="hidden w-64 flex-col border-r bg-sidebar lg:flex">
+      <aside className="sticky top-0 h-screen hidden w-64 flex-col border-r bg-sidebar lg:flex">
         {/* Logo */}
         <div className="border-b p-4">
           <Link href="/admin" className="flex items-center gap-1 font-bold text-2xl">
