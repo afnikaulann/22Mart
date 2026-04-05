@@ -73,9 +73,9 @@ export default function Home() {
             <span className="text-xs md:text-sm font-bold tracking-widest uppercase">Evolusi Belanja Premium</span>
           </motion.div>
 
-          <motion.h1 variants={fadeUpVariants} className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 max-w-5xl leading-[1.05] text-foreground lowercase">
-            Kualitas Tanpa <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Kompromi.</span>
+          <motion.h1 variants={fadeUpVariants} className="text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight mb-4 max-w-4xl leading-tight text-foreground">
+            Kualitas Tanpa{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Kompromi</span>
           </motion.h1>
 
           <motion.p variants={fadeUpVariants} className="text-lg md:text-xl text-muted-foreground font-medium max-w-2xl mb-8 leading-relaxed">
@@ -116,7 +116,7 @@ export default function Home() {
           <motion.div variants={fadeUpVariants}>
             <Link 
               href="/categories/fresh-food" 
-              className="group flex flex-col items-center text-center p-8 rounded-3xl bg-white/60 backdrop-blur-sm border border-border/60 hover:bg-white hover:border-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-300 h-full"
+              className="group flex flex-col items-center text-center p-8 rounded-[2rem] bg-card border-2 border-border shadow-sm hover:border-emerald-500 hover:shadow-[0_8px_30px_rgb(16,185,129,0.15)] hover:-translate-y-1 transition-all duration-300 h-full"
             >
               <div className="h-16 w-16 rounded-2xl bg-emerald-50/80 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                 <Sparkles className="text-emerald-500 h-8 w-8" />
@@ -129,7 +129,7 @@ export default function Home() {
           <motion.div variants={fadeUpVariants}>
             <Link 
               href="/categories/minuman" 
-              className="group flex flex-col items-center text-center p-8 rounded-3xl bg-white/60 backdrop-blur-sm border border-border/60 hover:bg-white hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 h-full"
+              className="group flex flex-col items-center text-center p-8 rounded-[2rem] bg-card border-2 border-border shadow-sm hover:border-blue-500 hover:shadow-[0_8px_30px_rgb(59,130,246,0.15)] hover:-translate-y-1 transition-all duration-300 h-full"
             >
               <div className="h-16 w-16 rounded-2xl bg-blue-50/80 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                 <Zap className="text-blue-500 h-8 w-8" />
@@ -142,7 +142,7 @@ export default function Home() {
           <motion.div variants={fadeUpVariants}>
             <Link 
               href="/categories/snack" 
-              className="group flex flex-col items-center text-center p-8 rounded-3xl bg-white/60 backdrop-blur-sm border border-border/60 hover:bg-white hover:border-orange-500/30 hover:shadow-xl hover:shadow-orange-500/5 transition-all duration-300 h-full"
+              className="group flex flex-col items-center text-center p-8 rounded-[2rem] bg-card border-2 border-border shadow-sm hover:border-orange-500 hover:shadow-[0_8px_30px_rgb(249,115,22,0.15)] hover:-translate-y-1 transition-all duration-300 h-full"
             >
               <div className="h-16 w-16 rounded-2xl bg-orange-50/80 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                 <Star className="text-orange-500 h-8 w-8" />
@@ -155,7 +155,7 @@ export default function Home() {
           <motion.div variants={fadeUpVariants}>
             <Link 
               href="/categories/mie-makanan-instan" 
-              className="group flex flex-col items-center text-center p-8 rounded-3xl bg-white/60 backdrop-blur-sm border border-border/60 hover:bg-white hover:border-rose-500/30 hover:shadow-xl hover:shadow-rose-500/5 transition-all duration-300 h-full"
+              className="group flex flex-col items-center text-center p-8 rounded-[2rem] bg-card border-2 border-border shadow-sm hover:border-rose-500 hover:shadow-[0_8px_30px_rgb(244,63,94,0.15)] hover:-translate-y-1 transition-all duration-300 h-full"
             >
               <div className="h-16 w-16 rounded-2xl bg-rose-50/80 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                 <Clock className="text-rose-500 h-8 w-8" />
@@ -168,7 +168,8 @@ export default function Home() {
       </section>
 
       {/* ── 3. IMMERSIVE BRAND STORY (Editorial Layout) ────────────────────── */}
-      <section className="px-6 bg-white relative overflow-hidden">
+      <div className="w-full bg-slate-50/50 py-16 border-y border-border/40 pb-20">
+        <section className="px-6 relative overflow-hidden">
         <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             
@@ -249,7 +250,8 @@ export default function Home() {
 
           </div>
         </div>
-      </section>
+        </section>
+      </div>
 
       {/* ── 4. FEATURED PRODUCTS (Enhanced Grid) ───────────────────────── */}
       <section className="px-6 py-12 bg-muted/40 rounded-[2rem] mx-4 lg:mx-10 relative">
@@ -311,7 +313,8 @@ export default function Home() {
       </section>
 
       {/* ── 5. BRAND PROMISES (Floating Glass Cards) ────────────────────── */}
-      <section className="px-6 max-w-[1400px] mx-auto relative">
+      <div className="w-full bg-slate-50/50 py-16 my-12 border-y border-border/40">
+        <section className="px-6 max-w-[1400px] mx-auto relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-full bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0" />
         
         <motion.div 
@@ -330,7 +333,7 @@ export default function Home() {
               key={i}
               variants={fadeUpVariants}
               whileHover={{ y: -5, scale: 1.01 }}
-              className="flex flex-col items-start p-8 rounded-[2rem] bg-white border border-border/60 shadow-xl shadow-black/[0.03] transition-all duration-300"
+              className="flex flex-col items-start p-8 rounded-[2.5rem] bg-card border-2 border-border shadow-sm hover:border-primary/50 hover:shadow-[0_8px_30px_rgb(var(--primary-rgb),0.1)] transition-all duration-300"
             >
               <div className="h-16 w-16 rounded-[1rem] bg-secondary/10 flex items-center justify-center text-secondary-foreground mb-6">
                 <feature.icon className="h-8 w-8" strokeWidth={1.5} />
@@ -340,7 +343,8 @@ export default function Home() {
             </motion.div>
           ))}
         </motion.div>
-      </section>
+        </section>
+      </div>
 
       {/* ── 6. EMAIL CAPTURE (Immersive Parallax Container) ─────────────── */}
       <section className="px-6">
