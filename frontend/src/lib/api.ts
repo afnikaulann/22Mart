@@ -48,9 +48,16 @@ export const authApi = {
   },
   login: async (data: any) => {
     await delay(500);
-    if (data.email === 'admin@22mart.id' && data.password === 'admin') {
-      return { data: { message: 'Success', user: { id: 'admin1', name: 'Admin Toko', email: data.email, role: 'ADMIN' as const, createdAt: new Date().toISOString() }, accessToken: 'mock-admin-token' } };
+    const normalizedEmail = data.email?.trim().toLowerCase();
+    
+    if (normalizedEmail === 'admin@22mart.id') {
+      if (data.password === 'admin') {
+        return { data: { message: 'Success', user: { id: 'admin1', name: 'Admin Toko', email: data.email, role: 'ADMIN' as const, createdAt: new Date().toISOString() }, accessToken: 'mock-admin-token' } };
+      } else {
+        throw { response: { data: { message: 'Password untuk Admin salah!' } } };
+      }
     }
+    
     return { data: { message: 'Success', user: { id: 'u1', name: 'Demo User', email: data.email, role: 'USER' as const, createdAt: new Date().toISOString() }, accessToken: 'mock-jwt-token' } };
   },
   getProfile: async () => {

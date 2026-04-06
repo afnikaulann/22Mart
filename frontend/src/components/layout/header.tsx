@@ -84,7 +84,7 @@ export function Header() {
           <Link href="/" className="font-extrabold text-2xl tracking-tighter text-white shrink-0 group flex items-center">
             <div className="relative h-10 w-24">
               <Image
-                src="/images/LOGO/LOGO .jpeg"
+                src="/images/LOGO/logo.jpeg"
                 alt="22Mart Logo"
                 fill
                 className="object-contain"
@@ -199,7 +199,7 @@ export function Header() {
             <span className="font-extrabold text-2xl tracking-tighter text-foreground flex items-center">
               <div className="relative h-8 w-20">
                 <Image
-                  src="/images/LOGO/LOGO .jpeg"
+                  src="/images/LOGO/logo.jpeg"
                   alt="22Mart Logo"
                   fill
                   className="object-contain filter brightness-0"
