@@ -95,7 +95,7 @@ export function Header() {
 
           {/* Desktop Nav Links */}
           <nav className="hidden lg:flex items-center gap-8">
-            <Link href="/products" className="text-sm font-semibold tracking-wide text-white/90 hover:text-secondary transition-colors">Semua Kategori</Link>
+            <Link href="/products" className="text-sm font-semibold tracking-wide text-white/90 hover:text-secondary transition-colors">Semua Produk</Link>
             <Link href="/products?promo=true" className="text-sm font-semibold tracking-wide text-white/90 hover:text-secondary transition-colors">Promo Terbatas</Link>
             <Link href="/about" className="text-sm font-semibold tracking-wide text-white/90 hover:text-secondary transition-colors">Tentang Kami</Link>
           </nav>
@@ -127,6 +127,17 @@ export function Header() {
                 </span>
               )}
             </Link>
+
+            {/* Orders Icon */}
+            {isAuthenticated && (
+              <Link
+                href="/orders"
+                className="relative hidden sm:flex p-2 rounded-full text-white hover:bg-white/10 transition-all duration-300"
+                aria-label="Pesanan Saya"
+              >
+                <Package className="h-5 w-5" strokeWidth={2} />
+              </Link>
+            )}
 
             {/* Auth / User */}
             {isAuthenticated ? (

@@ -370,11 +370,12 @@ export default function Home() {
           
           <form className="relative z-10 w-full max-w-lg flex flex-col sm:flex-row gap-3" onSubmit={(e) => e.preventDefault()}>
             <input
+              suppressHydrationWarning
               type="email"
               placeholder="Alamat Email Anda"
               className="flex-1 h-14 px-6 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-secondary text-base"
             />
-            <Button size="lg" className="h-14 px-8 rounded-full bg-secondary text-secondary-foreground hover:bg-white shrink-0 text-base font-bold transition-transform hover:scale-105 shadow-xl">
+            <Button suppressHydrationWarning size="lg" className="h-14 px-8 rounded-full bg-secondary text-secondary-foreground hover:bg-white shrink-0 text-base font-bold transition-transform hover:scale-105 shadow-xl">
               Daftar
             </Button>
           </form>

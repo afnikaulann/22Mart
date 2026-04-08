@@ -114,7 +114,7 @@ export default function OrdersPage() {
                 {/* Order items preview */}
                 <div className="mb-4 flex items-center gap-4">
                   <div className="flex -space-x-2">
-                    {order.items.slice(0, 3).map((item, index) => (
+                    {(order.items || []).slice(0, 3).map((item, index) => (
                       <div
                         key={item.id}
                         className="relative h-12 w-12 overflow-hidden rounded-lg border bg-white"
@@ -128,15 +128,15 @@ export default function OrdersPage() {
                         />
                       </div>
                     ))}
-                    {order.items.length > 3 && (
+                    {(order.items || []).length > 3 && (
                       <div className="flex h-12 w-12 items-center justify-center rounded-lg border bg-muted text-sm font-medium">
-                        +{order.items.length - 3}
+                        +{(order.items || []).length - 3}
                       </div>
                     )}
                   </div>
                   <div className="flex-1">
                     <p className="text-sm text-muted-foreground">
-                      {order.items.length} produk
+                      {(order.items || []).length} produk
                     </p>
                   </div>
                 </div>

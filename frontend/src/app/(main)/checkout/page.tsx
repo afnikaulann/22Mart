@@ -23,13 +23,14 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useCart } from '@/lib/cart-context';
 import { useAuth } from '@/lib/auth-context';
-import { ordersApi } from '@/lib/api';
+import { ordersApi, usersApi } from '@/lib/api';
 import { formatPrice, getPaymentMethodText } from '@/lib/utils';
 
 interface CheckoutForm {
   shippingAddress: string;
   paymentMethod: 'COD' | 'TRANSFER' | 'EWALLET';
   notes?: string;
+  saveAsDefault?: boolean;
 }
 
 const paymentMethods = [
@@ -55,7 +56,7 @@ const paymentMethods = [
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { user, isAuthenticated, isLoading: authLoading } = useAuth();
+  const { user, isAuthenticated, isLoading: authLoading, refreshUser } = useAuth();
   const { cart, isLoading: cartLoading, refreshCart } = useCart();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [receiptFile, setReceiptFile] = useState<File | null>(null);
@@ -102,6 +103,7 @@ export default function CheckoutPage() {
     }
 
     // If COD, submit immediately
+    setReceiptFile(null);
     await processOrder(data);
   };
 
@@ -113,6 +115,17 @@ export default function CheckoutPage() {
         paymentMethod: data.paymentMethod,
         notes: data.notes,
       });
+
+      if (receiptFile) {
+        const formData = new FormData();
+        formData.append('file', receiptFile);
+        await ordersApi.uploadPaymentProof(response.data.id, formData);
+      }
+
+      if (data.saveAsDefault && user) {
+        await usersApi.updateProfile({ name: user.name, phone: user.phone, address: data.shippingAddress });
+        if (refreshUser) await refreshUser();
+      }
 
       toast.success('Pesanan berhasil dibuat!');
       await refreshCart();
@@ -215,6 +228,16 @@ export default function CheckoutPage() {
                     {errors.shippingAddress.message}
                   </p>
                 )}
+                <label className="flex items-center gap-3 mt-4 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    className="h-4 w-4 rounded border-input bg-background text-primary accent-primary outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                    {...register('saveAsDefault')}
+                  />
+                  <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                    Simpan sebagai alamat pengiriman default
+                  </span>
+                </label>
               </div>
 
               {/* Payment Method */}

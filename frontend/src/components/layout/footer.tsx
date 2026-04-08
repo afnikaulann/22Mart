@@ -60,7 +60,7 @@ export function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-8 tracking-tight">Layanan</h3>
             <ul className="space-y-5 text-background/60 font-medium">
-              <li><button className="hover:text-background transition-colors">Hubungi Kami</button></li>
+              <li><button suppressHydrationWarning className="hover:text-background transition-colors">Hubungi Kami</button></li>
               <li><Link href="/faq" className="hover:text-background transition-colors">FAQ</Link></li>
               <li><Link href="/shipping" className="hover:text-background transition-colors">Pengiriman & Pengembalian</Link></li>
               <li><Link href="/privacy" className="hover:text-background transition-colors">Kebijakan Privasi</Link></li>

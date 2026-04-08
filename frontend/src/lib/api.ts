@@ -208,16 +208,21 @@ export const cartApi = {
 export const ordersApi = {
   create: async (data: any) => { 
     await delay(500); 
+    const orderItems = MOCK_CART_ITEMS.map(item => ({...item, price: item.product.price}));
+    const totalAmount = orderItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const newOrder = { 
       ...data,
       id: `o${MOCK_ORDERS.length + 1}`, 
       orderNumber: `ORD-${Math.floor(Math.random() * 10000)}`, 
       status: 'PENDING',
+      totalAmount: data.totalAmount || totalAmount,
+      items: orderItems,
       user: { id: 'u1', name: 'Demo User', email: 'demo@example.com', phone: '08123456789' },
       createdAt: new Date().toISOString(), 
       updatedAt: new Date().toISOString() 
     };
     MOCK_ORDERS.unshift(newOrder);
+    MOCK_CART_ITEMS = [];
     return { data: newOrder }; 
   },
   getAll: async (params?: any) => {

@@ -189,7 +189,7 @@ export default function OrderDetailPage() {
             <div className="rounded-xl border bg-card p-6">
               <h2 className="mb-4 text-lg font-semibold">Produk Pesanan</h2>
               <div className="space-y-4">
-                {order.items.map((item) => (
+                {(order.items || []).map((item) => (
                   <div key={item.id} className="flex gap-4">
                     <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg bg-muted">
                       <Image
